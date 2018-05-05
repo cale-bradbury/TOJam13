@@ -53,12 +53,12 @@ public class PlayerMovement : MonoEx, IRaycastable
 	public float pitchInputSpeed = 30;
 	public float liftFactor = 1.2f;
 	public float maxDragFactor = 5;
-
+	public float dropVelocity = 180;
+	public AnimationCurve pitchCurve;
 
 	float lastZPos;
 	float currentZPos;
 	float currentDrag = 0;
-	float dropVelocity = 90;
 	float velocityAdd = 0;
 
 	
@@ -123,10 +123,6 @@ public class PlayerMovement : MonoEx, IRaycastable
 
 
 
-
-
-
-
 	protected override void Awake ()
 	{
 		base.Awake ();
@@ -146,31 +142,38 @@ public class PlayerMovement : MonoEx, IRaycastable
 
 	}
 
-	
-
 	void Update ()
 	{
 		currentZPos = transform.position.z;	
 
 
-		//currentVelocity = ((currentZPos - lastZPos) / Time.deltaTime);
 
-		var localVel = transform.InverseTransformDirection (rb.velocity);
+
+		var localVel = transform.InverseTransformDirection (new Vector3 (rb.velocity.x, 0, rb.velocity.z));
 		currentVelocity = localVel.z;
 
 		currentPitch = GetPlaneDotProduct ();
 
 
-		if (currentPitch > 0 && currentVelocity > 35) {
+
+		if (currentPitch > 0) {
+			velocityAdd = -currentPitch * dropVelocity;		
 			currentLift = currentPitch * currentVelocity * liftFactor;
-			velocityAdd = 0;
-		} else {
-			velocityAdd = -currentPitch * dropVelocity;
-			currentLift = 0;
+			var newVel = rb.velocity;
+			if (rb.velocity.y < 0) {
+				newVel.y = 0;	
+				rb.velocity = newVel;
+			}
+		} else if (currentPitch < 0) {
+			velocityAdd = -currentPitch * dropVelocity * 4;		
+			currentLift = (currentPitch * currentVelocity * liftFactor) / 2;
 		}
 
+			
 
-		currentDrag = Mathf.Lerp (0, origDrag * maxDragFactor, ((currentPitch + 1) / 2));
+
+
+//		currentDrag = Mathf.Lerp (0, origDrag * maxDragFactor, ((currentPitch + 1) / 2));
 
 
 		lastZPos = transform.position.z;
@@ -192,7 +195,7 @@ public class PlayerMovement : MonoEx, IRaycastable
 	{
 		rb.AddForce (Vector3.up * currentLift, ForceMode.Force);
 		rb.AddForce (transform.forward * velocityAdd, ForceMode.Force);
-		rb.drag = currentDrag;
+//		rb.drag = currentDrag;
 	}
 
 	float GetAngle (Vector3 from, Vector3 to)

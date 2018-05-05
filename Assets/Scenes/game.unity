@@ -206,8 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 488346521}
-  smoothSpeed: 0.125
-  offset: {x: 0, y: 0.8, z: -3.93}
+  smoothSpeed: 5
+  offset: {x: 0, y: 0, z: -3.93}
 --- !u!114 &88167507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,8 +371,27 @@ MonoBehaviour:
   currentLift: 0
   startForce: 50
   pitchInputSpeed: 58.23
-  liftFactor: 1.2
-  maxDragFactor: 10
+  liftFactor: 1.8
+  maxDragFactor: 30
+  dropVelocity: 20
+  pitchCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.024276733
+      inSlope: 0.00000027948778
+      outSlope: 0.00000027948778
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1.0037661
+      value: 0.9806373
+      inSlope: 2.4221
+      outSlope: 2.4221
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
   canInput: 1
   mask:
     serializedVersion: 2
