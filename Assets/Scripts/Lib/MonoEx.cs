@@ -11,30 +11,30 @@ public class MonoEx : MonoBehaviour
 	Vector3 origScale;
 	bool origIsKinematic;
 	bool origUseGravity;
+	protected float origDrag;
 	[HideInInspector]
-	public Rigidbody2D rb;
+	public Rigidbody rb;
 
-	protected virtual void Awake()
+	protected virtual void Awake ()
 	{
-		Init();
+		Init ();
 	}
 
-	protected virtual void Init()
+	protected virtual void Init ()
 	{
-		if (GetComponent<Rigidbody2D>())
-		{
-			rb = GetComponent<Rigidbody2D>();
+		if (GetComponent<Rigidbody> ()) {
+			rb = GetComponent<Rigidbody> ();
 			origIsKinematic = rb.isKinematic;
+			origDrag = rb.drag;
 		}
 		origPos = transform.position;
 		origRot = transform.rotation;
 		origScale = transform.localScale;
 	}
 
-	public virtual void Reset()
+	public virtual void Reset ()
 	{
-		if (rb != null)
-		{
+		if (rb != null) {
 			rb.isKinematic = true;
 			rb.velocity = Vector3.zero;
 			rb.isKinematic = origIsKinematic;
@@ -44,43 +44,41 @@ public class MonoEx : MonoBehaviour
 		transform.localScale = origScale;
 	}
 
-	public virtual void Reset(System.Action doFirst)
+	public virtual void Reset (System.Action doFirst)
 	{
-		if (doFirst != null)
-		{
-			doFirst();
+		if (doFirst != null) {
+			doFirst ();
 		}
-		Reset();
+		Reset ();
 	}
 
-	public virtual void Enable()
+	public virtual void Enable ()
 	{
-		gameObject.SetActive(true);
+		gameObject.SetActive (true);
 		enabled = true;
-		if (rb != null)
-		{
+		if (rb != null) {
 			rb.isKinematic = false;
 		}
 
 	}
 
-	public virtual void Disable()
+	public virtual void Disable ()
 	{
-		gameObject.SetActive(false);
-		Reset();
+		gameObject.SetActive (false);
+		Reset ();
 	}
 
-	public Vector3 GetOrigScale()
+	public Vector3 GetOrigScale ()
 	{
 		return origScale;
 	}
 
-	public Vector3 GetOrigPos()
+	public Vector3 GetOrigPos ()
 	{
 		return origPos;
 	}
 
-	public Quaternion GetOrigRot()
+	public Quaternion GetOrigRot ()
 	{
 		return origRot;
 	}

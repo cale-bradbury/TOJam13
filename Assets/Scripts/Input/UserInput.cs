@@ -9,7 +9,12 @@ public class KeyboardInput : IUserInputProxy
 	
 	public InputModel GetInput ()
 	{
-		InputModel i = new InputModel ((Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.LeftArrow)) ? 1 : 0, (Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.RightArrow)) ? 1 : 0);
+		InputModel i = new InputModel ((Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.LeftArrow)) ? 1 : 0, 
+			(Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.RightArrow)) ? 1 : 0,
+			(Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.UpArrow)) ? 1 : 0,
+			(Input.GetKey (KeyCode.S) || Input.GetKey (KeyCode.DownArrow)) ? 1 : 0,
+			(Input.GetKey (KeyCode.Space) ? 1 : 0)
+		);
 		return i;
 	}
 
