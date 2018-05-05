@@ -79,6 +79,7 @@ public class PlayerMovement : MonoEx, IRaycastable
 	public float MaxFuel = 100;
 
 	public float velocityForce = 50;
+	public float velocityAdd = 0;
 	public float lateralVelocityForce = 30;
 
 	public float maxBoostFactor = 3;
@@ -88,7 +89,6 @@ public class PlayerMovement : MonoEx, IRaycastable
 
 
 	float dropVelocity = 20;
-	float velocityAdd = 0;
 	float boostFactor = 1;
 	float origVelocityForce = 50;
 	float hInput = 0;
@@ -217,7 +217,7 @@ public class PlayerMovement : MonoEx, IRaycastable
 
 	void FixedUpdate ()
 	{
-		rb.velocity = (transform.forward * ((velocityForce + velocityAdd) * boostFactor) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
+		rb.velocity = (transform.forward * ((velocityAdd + velocityForce) * boostFactor) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
 	}
 
 	float GetPlaneDotProduct ()
