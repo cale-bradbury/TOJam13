@@ -79,7 +79,6 @@ public class PlayerMovement : MonoEx, IRaycastable
 	public float MaxFuel = 100;
 
 	public float velocityForce = 50;
-	public float velocityAdd = 0;
 	public float lateralVelocityForce = 30;
 
 	public float maxBoostFactor = 3;
@@ -89,6 +88,7 @@ public class PlayerMovement : MonoEx, IRaycastable
 
 
 	float dropVelocity = 20;
+	float velocityAdd = 0;
 	float boostFactor = 1;
 	float origVelocityForce = 50;
 	float hInput = 0;
@@ -168,11 +168,11 @@ public class PlayerMovement : MonoEx, IRaycastable
 		if (currentPitch > 0) {
 			velocityAdd = -currentPitch * dropVelocity;
 			velocityForce += (-currentPitch * Time.deltaTime * 5);
-			if (currentVelocity > 4) {
+			if (currentVelocity > 20) {
 				currentLift = currentPitch * (currentVelocity * liftFactor);
 				velocityForce -= 2 * Time.deltaTime;
 			} else
-				currentLift = -(4 - currentVelocity);
+				currentLift = -(20 - currentVelocity);
 		} else if (currentPitch < 0) {
 			velocityAdd = -currentPitch * dropVelocity * 4;
 			velocityForce += (-currentPitch * Time.deltaTime * 20);
@@ -209,15 +209,13 @@ public class PlayerMovement : MonoEx, IRaycastable
 		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
 		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
 
-		if (hInput != 0) {
-			
-		}
 
 	}
 
 	void FixedUpdate ()
 	{
-		rb.velocity = (transform.forward * ((velocityAdd + velocityForce) * boostFactor) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
+
+		rb.velocity = (transform.forward * ((velocityForce + velocityAdd) * boostFactor) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
 	}
 
 	float GetPlaneDotProduct ()

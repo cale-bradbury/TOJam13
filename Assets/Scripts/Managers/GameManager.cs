@@ -20,7 +20,7 @@ public enum GameState
 }
 
 
-public class GameManager : Singleton<GameManager>, IAddableList
+public class GameManager : Singleton<GameManager>
 {
 	public const string FIRSTLEVEL = "__init";
 	public const string SECONDLEVEL = "__init 1";
@@ -32,32 +32,29 @@ public class GameManager : Singleton<GameManager>, IAddableList
 	public GameState nextState = GameState.Intro;
 	public GameState currentState = GameState.NullState;
 
-	[HideInInspector]
-	public List<IDestroyable> scientists;
 
 
 
-	public float durationBeforeFlare { get; set; }
 
-	[HideInInspector]
-	public float startFlareValue = 10;
+
+
 
 	private float origDuration;
-	public float rescueIncrement = 3;
 
-	int numCrashes = 0;
+
+
 
 	#region event declaration
 
-	public delegate void OnStateChangeHandler(GameState nextState);
+	public delegate void OnStateChangeHandler (GameState nextState);
 
 	public static event OnStateChangeHandler OnStateChange;
 
-	public delegate void OnGameEvent();
+	public delegate void OnGameEvent ();
 
 	public static event OnGameEvent OnStateUpdateHandler, OnSwipeLeft, OnSwipeRight;
 
-	public delegate void OnNewStartPosition(Vector3 pos, Quaternion rot);
+	public delegate void OnNewStartPosition (Vector3 pos, Quaternion rot);
 
 	public static event OnNewStartPosition OnSetPosition;
 
@@ -68,39 +65,39 @@ public class GameManager : Singleton<GameManager>, IAddableList
 
 	#region Monobehaviours
 
-	void Awake()
+	void Awake ()
 	{
 
-		durationBeforeFlare = 180;		
+	
 		OnStateChange += HandleOnStateChange;
-		origDuration = durationBeforeFlare;
+	
 		Application.targetFrameRate = 60;
 		#if UNITY_EDITOR
 		Application.runInBackground = true;
 		#endif
 	}
 
-	void Start()
+	void Start ()
 	{
 		if (instance == this)
-			SetGameState(GameState.Intro);
+			SetGameState (GameState.Intro);
 
 	}
 
-	void OnDestroy()
+	void OnDestroy ()
 	{
 		OnStateChange -= HandleOnStateChange;
 	}
 
-	void Update()
+	void Update ()
 	{
 		//for modularly adding/removing functionality from a state's update loop
 		if (OnStateUpdateHandler != null)
-			OnStateUpdateHandler();
+			OnStateUpdateHandler ();
 
 	}
 
-	void OnLevelWasLoaded(int level)
+	void OnLevelWasLoaded (int level)
 	{
 
 	}
@@ -111,38 +108,32 @@ public class GameManager : Singleton<GameManager>, IAddableList
 	#region EventHandlers
 
 
-	public void SetGameState(GameState gameState)
+	public void SetGameState (GameState gameState)
 	{
-		if (gameState != currentState)
-		{
+		if (gameState != currentState) {
 
-			if (OnStateChange != null)
-			{
-				OnStateChange(gameState);
+			if (OnStateChange != null) {
+				OnStateChange (gameState);
 			}
 			currentState = gameState;
-		}
-		else
-		{
-			Debug.Log("ALREADY IN THIS STATE");
+		} else {
+			Debug.Log ("ALREADY IN THIS STATE");
 
 		}
 
 	}
 
-	public static void SwipeRight()
+	public static void SwipeRight ()
 	{
-		if (OnSwipeRight != null)
-		{
-			OnSwipeRight();
+		if (OnSwipeRight != null) {
+			OnSwipeRight ();
 		}
 	}
 
-	public static void SwipeLeft()
+	public static void SwipeLeft ()
 	{
-		if (OnSwipeLeft != null)
-		{
-			OnSwipeLeft();
+		if (OnSwipeLeft != null) {
+			OnSwipeLeft ();
 		}
 	}
 
@@ -150,34 +141,35 @@ public class GameManager : Singleton<GameManager>, IAddableList
 
 	#region Public Methods
 
-	public void PrepareGame()
+	public void PrepareGame ()
 	{
-		SetGameState(GameState.StartGame);
+		SetGameState (GameState.StartGame);
 	}
 
-	public void ResetGame()
+	public void ResetGame ()
 	{
-		SetGameState(GameState.MainMenu);
+		SetGameState (GameState.MainMenu);
 		//		LoadLevel(FIRSTLEVEL);
 	}
 
-	public void NextLevel()
+	public void NextLevel ()
 	{
 		//		LoadLevel(SECONDLEVEL);
 	}
 
 	#endregion
 
-	void HandleOnStateChange(GameState state)
+	void HandleOnStateChange (GameState state)
 	{
 		OnStateUpdateHandler = null;
 		//				inTransition = true;
 		OnStateUpdateHandler += () => {
-			if (Input.GetKeyDown(KeyCode.Space))
-				SetGameState(nextState);
+			if (Input.GetKeyDown (KeyCode.R))
+				Application.LoadLevel (Application.loadedLevel);
+			if (Input.GetKeyDown (KeyCode.T))
+				SetGameState (nextState);
 		};
-		switch (state)
-		{
+		switch (state) {
 		case GameState.Intro:
 			D.log ("intro state");
 
@@ -185,7 +177,7 @@ public class GameManager : Singleton<GameManager>, IAddableList
 
 			StartCoroutine (Auto.Wait (0.1f, () => {
 
-				SetGameState(nextState);
+				SetGameState (nextState);
 			}));
 			break;
 		case GameState.MainMenu:
@@ -199,19 +191,12 @@ public class GameManager : Singleton<GameManager>, IAddableList
 			break;
 		case GameState.Game:
 			OnStateUpdateHandler += () => {
-				if (durationBeforeFlare > 0)
-				{
-					durationBeforeFlare -= Time.deltaTime;
-				}
-				else if (durationBeforeFlare <= 0)
-				{
-					SetGameState(GameState.End);
-				}
+				
 			};
 			nextState = GameState.Summary;
 			break;
 		case GameState.Summary:
-			durationBeforeFlare = origDuration;
+
 
 			nextState = GameState.End;
 			break;
@@ -222,26 +207,26 @@ public class GameManager : Singleton<GameManager>, IAddableList
 
 
 
-			numCrashes += 1;
+
 			nextState = GameState.StartGame;
 
 			break;
 		}
-		Debug.Log("switching state to " + state);
+		Debug.Log ("switching state to " + state);
 
 	}
 
 
-	public void AddToList<T> (T obj)
-	{
-		IDestroyable scientist = obj as IDestroyable;
-		scientists.Add (scientist);
-	}
-
-	public void RemoveFromList<T> (T obj)
-	{
-		IDestroyable scientist = obj as IDestroyable;
-		scientists.Remove (scientist);
-	}
+	//	public void AddToList<T> (T obj)
+	//	{
+	//		IDestroyable scientist = obj as IDestroyable;
+	//		scientists.Add (scientist);
+	//	}
+	//
+	//	public void RemoveFromList<T> (T obj)
+	//	{
+	//		IDestroyable scientist = obj as IDestroyable;
+	//		scientists.Remove (scientist);
+	//	}
 
 }
