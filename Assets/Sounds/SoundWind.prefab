@@ -19,13 +19,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4730069647825486}
-  - component: {fileID: 114720121511091984}
   - component: {fileID: 82286785780969940}
   - component: {fileID: 114021225006146926}
   - component: {fileID: 114564374192217984}
   - component: {fileID: 114374644878285290}
   - component: {fileID: 114371499585445194}
   - component: {fileID: 114658610151910272}
+  - component: {fileID: 114348539778011974}
   m_Layer: 0
   m_Name: SoundWind
   m_TagString: Untagged
@@ -140,6 +140,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   synthesizerMixerGroup: {fileID: 0}
   spatializerMixerGroup: {fileID: 0}
+--- !u!114 &114348539778011974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651136831761456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f5df577159a494d8d7e00d3ca051c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 114564374192217984}
+  param: 14
+  distanceToValue:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 1
+      value: 0.6
+      inSlope: -0.022222225
+      outSlope: -0.022222225
+      tangentMode: 34
+    - serializedVersion: 2
+      time: 10
+      value: 0.4
+      inSlope: -0.022222225
+      outSlope: -0.022222225
+      tangentMode: 34
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  source: {fileID: 82286785780969940}
+  panAmount: 0.2
 --- !u!114 &114371499585445194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -363,50 +396,3 @@ MonoBehaviour:
   controller: {fileID: 114564374192217984}
   note: 64
   velocity: 1
---- !u!114 &114720121511091984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651136831761456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a8c266df1c062429e243a7058366c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input:
-    type: 0
-    types:
-    - System.Single
-    - System.Int32
-    - UnityEngine.Vector2
-    - UnityEngine.Vector3
-    - UnityEngine.Vector4
-    obj: {fileID: 4730069647825486}
-    varName: position-x
-    componentIndex: 0
-    isMat: 0
-    componentName: 
-    go: {fileID: 0}
-    isVector: 0
-    index: 0
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 55
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 64
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  controller: {fileID: 114564374192217984}
-  parameter: 14
