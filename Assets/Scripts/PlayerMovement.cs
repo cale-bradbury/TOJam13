@@ -49,41 +49,58 @@ public class PlayerMovement : MonoEx, IRaycastable
 	//
 
 
+
 	bool isPlayable = true;
 
+	public Transform planeRoot;
 
-	//	[HideInInspector]
+
+	//THESE ARE THE PUBLIC VARS FOR CALE
+	[HideInInspector]
 	public float currentPitch;
-	//	[HideInInspector]
+	[HideInInspector]
 	public float currentVelocity;
-	//	[HideInInspector]
+	[HideInInspector]
 	public float currentLift;
-	
-	public float startForce = 10;
+	[HideInInspector]
+	public float currentAltitutde;
+	[HideInInspector]
+	public float currentDistance;
+
+
 	public float pitchInputSpeed = 30;
 	public float liftFactor = 1.2f;
-	public float maxDragFactor = 5;
-	public float dropVelocity = 180;
-	public AnimationCurve pitchCurve;
 
-	float lastZPos;
-	float currentZPos;
-	float currentDrag = 0;
+
+	public float maxBoostFactor = 3;
+	public float fuelConsumptionFactor = 1;
+	public float MaxFuel = 100;
+	public float currentFuel = 100;
+
+
+
+
+
+
+
+
+	public float velocityForce = 50;
+	public float lateralVelocityForce = 30;
+	public float boostIncrease = 1;
+	public float boostDecrease = 3;
+	public float smoothTime = 10;
+
+
+
+	float dropVelocity = 20;
 	float velocityAdd = 0;
+	float boostFactor = 1;
+	float origVelocityForce = 50;
+	float hInput = 0;
 
-	Vector3 targetVelocity = Vector3.zero;
-	float tempYVel;
-
-
-	
-	
-	
-	
-	
 	public delegate void OnPlayerStateEvent (PlayerState nextState);
 
 	public static event OnPlayerStateEvent OnPlayerStateChange;
-
 
 	#region inputStuff
 
@@ -134,8 +151,6 @@ public class PlayerMovement : MonoEx, IRaycastable
 		}
 	}
 
-
-
 	protected override void Awake ()
 	{
 		base.Awake ();
@@ -144,49 +159,44 @@ public class PlayerMovement : MonoEx, IRaycastable
 	protected override void Init ()
 	{
 		base.Init ();
-		currentDrag = origDrag;
-		currentZPos = transform.position.z;
-		lastZPos = transform.position.z;
+
+		origVelocityForce = velocityForce;
+
+
 	}
 
 	void Start ()
 	{
-		rb.AddForce ((transform.forward + new Vector3 (0, 0.2f, 0)) * startForce, ForceMode.Impulse);
+//		rb.AddForce ((transform.forward + new Vector3 (0, 0.2f, 0)) * startForce, ForceMode.Impulse);
 
 	}
 
 	void Update ()
 	{
-		currentZPos = transform.position.z;	
-
-
-
-
+		
 		var localVel = transform.InverseTransformDirection (new Vector3 (rb.velocity.x, 0, rb.velocity.z));
 		currentVelocity = localVel.z;
 
+
+
+		//PITCH
 		currentPitch = GetPlaneDotProduct ();
 
-
-
 		if (currentPitch > 0) {
-			velocityAdd = -currentPitch * dropVelocity;		
-			currentLift = currentPitch * currentVelocity * liftFactor;
-
+			velocityAdd = -currentPitch * dropVelocity;
+			velocityForce += (-currentPitch * Time.deltaTime * 5);
+			if (currentVelocity > 20) {
+				currentLift = currentPitch * (currentVelocity * liftFactor);
+				velocityForce -= 2 * Time.deltaTime;
+			} else
+				currentLift = -(20 - currentVelocity);
 		} else if (currentPitch < 0) {
-
-			velocityAdd = -currentPitch * dropVelocity * 4;		
-			currentLift = (currentPitch * currentVelocity * liftFactor) / 2;
+			velocityAdd = -currentPitch * dropVelocity * 4;
+			velocityForce += (-currentPitch * Time.deltaTime * 20);
+			currentLift = 0;
 		}
 
-			
 
-
-
-//		currentDrag = Mathf.Lerp (0, origDrag * maxDragFactor, ((currentPitch + 1) / 2));
-
-
-		lastZPos = transform.position.z;
 
 		if (canInput) {
 			
@@ -196,18 +206,36 @@ public class PlayerMovement : MonoEx, IRaycastable
 				transform.Rotate (transform.right, Time.deltaTime * vInput * pitchInputSpeed, Space.Self);
 			}
 		}
+
+		//BOOST
+		if (Input.GetKey (KeyCode.Space) && currentFuel > 0) {
+			currentFuel -= fuelConsumptionFactor * Time.deltaTime;
+			if (velocityForce < origVelocityForce) {
+				velocityForce += 15 * Time.deltaTime;
+			}
+			if (boostFactor < maxBoostFactor) {
+				boostFactor += boostIncrease * Time.deltaTime;
+			}
+		}
+		if (boostFactor > 1 && Input.GetKey (KeyCode.Space) == false) {
+			boostFactor -= boostDecrease * Time.deltaTime;
+		}
+
+		//ROLL
+		hInput = Input.GetAxis ("Horizontal");
+		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
+		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
+
+		if (hInput != 0) {
 			
+		}
 
 
 	}
 
 	void FixedUpdate ()
 	{
-		rb.AddForce (Vector3.up * currentLift * Mathf.Abs (currentPitch * 3), ForceMode.Force);
-		rb.AddForce (transform.forward * velocityAdd, ForceMode.Force);
-
-
-//		rb.drag = currentDrag;
+		rb.velocity = (transform.forward * ((velocityForce + velocityAdd) * boostFactor) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
 	}
 
 	float GetAngle (Vector3 from, Vector3 to)
@@ -216,7 +244,6 @@ public class PlayerMovement : MonoEx, IRaycastable
 		to = new Vector3 (to.x, to.y, 20);
 		return Vector3.Angle (from, to);
 	}
-
 
 	float GetPlaneDotProduct ()
 	{
@@ -247,7 +274,25 @@ public class PlayerMovement : MonoEx, IRaycastable
 	{
 		base.Disable ();
 	}
-		
+
+
+
+	Quaternion ClampRotationAroundXAxis (Quaternion q)
+	{
+		q.x /= q.w;
+		q.y /= q.w;
+		q.z /= q.w;
+		q.w = 1.0f;
+
+		float angleZ = 2.0f * Mathf.Rad2Deg * Mathf.Atan (q.z);
+
+		angleZ = Mathf.Clamp (angleZ, -30, 30);
+
+		q.x = Mathf.Tan (0.5f * Mathf.Deg2Rad * angleZ);
+
+		return q;
+	}
+
 	
 		
 
