@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: FogParticle
+  m_Name: FogSheet
   m_Shader: {fileID: 4800000, guid: 8440052a6a913a84397b8f70a60b2ba7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -32,12 +32,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
         m_Texture: {fileID: 2800000, guid: 898f8897edd2c7c46b05ea4f2142a933, type: 3}
-        m_Scale: {x: 0.2, y: 0.2}
+        m_Scale: {x: 0.05, y: 0.05}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _InvFade: 0.55
     m_Colors:
-    - _Color: {r: 0.6102941, g: 0.6102941, b: 0.6102941, a: 0.309}
+    - _Color: {r: 0.6102941, g: 0.6102941, b: 0.6102941, a: 0.572}
     - _EmisColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
     - _Fog: {r: 0, g: 1, b: 0, a: 0}
     - _FogColor: {r: 0, g: 0, b: 0, a: 0}
