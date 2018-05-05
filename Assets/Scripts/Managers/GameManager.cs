@@ -3,6 +3,24 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+
+
+//TODO:
+/*
+ * add reset to player state
+ * add camera for death state that stays static
+ * add UI for velocity, fuel, using boost, altitude
+ * calculate distance
+ * add score
+ * add orbs that refill fuel from proximity
+ * add rings to give good score
+ * 
+ *
+ *
+*/
+
+
+
 [System.Flags]
 public enum GameState
 {
@@ -68,7 +86,7 @@ public class GameManager : Singleton<GameManager>
 	void Awake ()
 	{
 
-	
+		
 		OnStateChange += HandleOnStateChange;
 	
 		Application.targetFrameRate = 60;
