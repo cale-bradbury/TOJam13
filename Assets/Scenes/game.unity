@@ -370,7 +370,9 @@ MonoBehaviour:
   currentVelocity: 0
   currentLift: 0
   startForce: 50
-  pitchInputSpeed: 36.74
+  pitchInputSpeed: 58.23
+  liftFactor: 1.2
+  maxDragFactor: 10
   canInput: 1
   mask:
     serializedVersion: 2
@@ -383,7 +385,7 @@ Rigidbody:
   m_GameObject: {fileID: 488346517}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.02
+  m_Drag: 0.01
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0

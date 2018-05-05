@@ -46,18 +46,20 @@ public class PlayerMovement : MonoEx, IRaycastable
 	public float currentPitch;
 	//	[HideInInspector]
 	public float currentVelocity;
-	//Just checking Z velocity (airspeed)
 	//	[HideInInspector]
 	public float currentLift;
 	
 	public float startForce = 10;
 	public float pitchInputSpeed = 30;
+	public float liftFactor = 1.2f;
+	public float maxDragFactor = 5;
 
 
 	float lastZPos;
 	float currentZPos;
-
 	float currentDrag = 0;
+	float dropVelocity = 90;
+	float velocityAdd = 0;
 
 	
 	
@@ -149,17 +151,26 @@ public class PlayerMovement : MonoEx, IRaycastable
 	void Update ()
 	{
 		currentZPos = transform.position.z;	
-		currentVelocity = ((currentZPos - lastZPos) / Time.deltaTime);
+
+
+		//currentVelocity = ((currentZPos - lastZPos) / Time.deltaTime);
+
+		var localVel = transform.InverseTransformDirection (rb.velocity);
+		currentVelocity = localVel.z;
+
 		currentPitch = GetPlaneDotProduct ();
 
 
-		if (currentPitch > 0 && currentVelocity > 25) {
-			currentLift = currentPitch * currentVelocity * 1.5f;
-		} else
+		if (currentPitch > 0 && currentVelocity > 35) {
+			currentLift = currentPitch * currentVelocity * liftFactor;
+			velocityAdd = 0;
+		} else {
+			velocityAdd = -currentPitch * dropVelocity;
 			currentLift = 0;
+		}
 
-//		transform.Rotate (transform.right, -1 * Time.deltaTime * rb.velocity.y, Space.Self);
-		currentDrag = Mathf.Lerp (origDrag * 0.1f, origDrag * 3, ((currentPitch + 1) / 2));
+
+		currentDrag = Mathf.Lerp (0, origDrag * maxDragFactor, ((currentPitch + 1) / 2));
 
 
 		lastZPos = transform.position.z;
@@ -171,18 +182,16 @@ public class PlayerMovement : MonoEx, IRaycastable
 			if (vInput != 0) {
 				transform.Rotate (transform.right, Time.deltaTime * vInput * pitchInputSpeed, Space.Self);
 			}
-
-
-//			Vector3 tempEuler = transform.eulerAngles;
-//
-//			tempEuler.x = Mathf.Clamp (transform.eulerAngles.x, -80, 80);
-//			transform.eulerAngles = tempEuler;
 		}
+			
+
+
 	}
 
 	void FixedUpdate ()
 	{
-		rb.AddForce (Vector3.up * currentLift, ForceMode.Acceleration);
+		rb.AddForce (Vector3.up * currentLift, ForceMode.Force);
+		rb.AddForce (transform.forward * velocityAdd, ForceMode.Force);
 		rb.drag = currentDrag;
 	}
 
