@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114371499585445194}
   - component: {fileID: 114658610151910272}
   m_Layer: 0
-  m_Name: HelmTest
+  m_Name: SoundWind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
