@@ -66,29 +66,24 @@ public class PlayerMovement : MonoEx, IRaycastable
 	public float currentAltitutde;
 	[HideInInspector]
 	public float currentDistance;
-
-
-	public float pitchInputSpeed = 30;
-	public float liftFactor = 1.2f;
-
-
-	public float maxBoostFactor = 3;
-	public float fuelConsumptionFactor = 1;
-	public float MaxFuel = 100;
+	[HideInInspector]
 	public float currentFuel = 100;
 
 
+	public float pitchInputSpeed = 30;
+	public float smoothTime = 10;
 
 
-
-
-
+	public float liftFactor = 1.2f;
+	public float fuelConsumptionFactor = 1;
+	public float MaxFuel = 100;
 
 	public float velocityForce = 50;
 	public float lateralVelocityForce = 30;
+
+	public float maxBoostFactor = 3;
 	public float boostIncrease = 1;
 	public float boostDecrease = 3;
-	public float smoothTime = 10;
 
 
 
@@ -103,10 +98,6 @@ public class PlayerMovement : MonoEx, IRaycastable
 	public static event OnPlayerStateEvent OnPlayerStateChange;
 
 	#region inputStuff
-
-	public const string ANIM = "AnimState";
-	AnimState currentAnimState = AnimState.Null;
-	Animator[] anims;
 
 	//	[HideInInspector]
 	public bool canInput = true;
@@ -159,15 +150,7 @@ public class PlayerMovement : MonoEx, IRaycastable
 	protected override void Init ()
 	{
 		base.Init ();
-
 		origVelocityForce = velocityForce;
-
-
-	}
-
-	void Start ()
-	{
-//		rb.AddForce ((transform.forward + new Vector3 (0, 0.2f, 0)) * startForce, ForceMode.Impulse);
 
 	}
 

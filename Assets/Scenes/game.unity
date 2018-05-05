@@ -320,37 +320,18 @@ MonoBehaviour:
   currentPitch: 0
   currentVelocity: 0
   currentLift: 0
-  startForce: 50
+  currentAltitutde: 0
+  currentDistance: 0
+  currentFuel: 100
   pitchInputSpeed: 75.48
+  smoothTime: 10
   liftFactor: 1.8
-  maxDragFactor: 30
-  dropVelocity: 20
-  maxBoostFactor: 3
   fuelConsumptionFactor: 10.27
   MaxFuel: 100
-  currentFuel: 100
-  smoothTime: 10
-  pitchCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0.024276733
-      inSlope: 0.00000027948778
-      outSlope: 0.00000027948778
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.0037661
-      value: 0.9806373
-      inSlope: 2.4221
-      outSlope: 2.4221
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
   velocityForce: 50
   lateralVelocityForce: 80
-  boostIncrease: 1
+  maxBoostFactor: 5
+  boostIncrease: 2
   boostDecrease: 3
   canInput: 1
   mask:
