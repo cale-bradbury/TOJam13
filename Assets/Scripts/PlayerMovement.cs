@@ -3,7 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 		
-		
+/// <summary>
+/// NOTES FOR MYSELF FOR TOMORROW::::
+/// 
+/// Make velocity manually instead of add force.
+/// plane should immediately adjust y from angle of attack 
+/// (if plane tilts above 0, should immediately go up)
+/// all y calculations for plane should be made explicitly by its angle 
+/// unless under a specified stall speed at which point negative lift factor gradually worsens
+/// 
+/// need to calculate all needed forces and apply them manually in fixedupdate per frame
+/// </summary>
 	
 public enum PlayerState
 {
@@ -61,7 +71,10 @@ public class PlayerMovement : MonoEx, IRaycastable
 	float currentDrag = 0;
 	float velocityAdd = 0;
 
-	
+	Vector3 targetVelocity = Vector3.zero;
+	float tempYVel;
+
+
 	
 	
 	
@@ -159,12 +172,9 @@ public class PlayerMovement : MonoEx, IRaycastable
 		if (currentPitch > 0) {
 			velocityAdd = -currentPitch * dropVelocity;		
 			currentLift = currentPitch * currentVelocity * liftFactor;
-			var newVel = rb.velocity;
-			if (rb.velocity.y < 0) {
-				newVel.y = 0;	
-				rb.velocity = newVel;
-			}
+
 		} else if (currentPitch < 0) {
+
 			velocityAdd = -currentPitch * dropVelocity * 4;		
 			currentLift = (currentPitch * currentVelocity * liftFactor) / 2;
 		}
@@ -193,8 +203,10 @@ public class PlayerMovement : MonoEx, IRaycastable
 
 	void FixedUpdate ()
 	{
-		rb.AddForce (Vector3.up * currentLift, ForceMode.Force);
+		rb.AddForce (Vector3.up * currentLift * Mathf.Abs (currentPitch * 3), ForceMode.Force);
 		rb.AddForce (transform.forward * velocityAdd, ForceMode.Force);
+
+
 //		rb.drag = currentDrag;
 	}
 
