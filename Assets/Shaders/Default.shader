@@ -83,9 +83,9 @@ Shader "Custom/Default" {
 			// Albedo comes from a texture tinted by color
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
 
-			float f_off = snoise(IN.worldPos.xyz*2.)*_FogY.z;
+			float f_off = 0.;//snoise(IN.worldPos.xyz*2.)*_FogY.z;
 
-			float f = smoothstep(_FogY.y, _FogY.x, IN.worldPos.y+f_off);
+			float f = smoothstep(_FogY.y, _FogY.x, IN.worldPos.y + f_off);
 			f = max(f, smoothstep(_Fog.x, _Fog.y, IN.dist));
 
 			c.rgb = lerp(c.rgb, _FogColor.rgb, f);
