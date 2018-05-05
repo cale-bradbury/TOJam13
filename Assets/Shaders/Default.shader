@@ -15,12 +15,15 @@ Shader "Custom/Default" {
 		//_Metallic ("Metallic", Range(0,1)) = 0.0
 	}
 	SubShader {
-		Tags { "RenderType"="Opaque" }
-		LOD 200
+		Tags{ "RenderType" = "Opaque" "Queue" = "Geometry" }
+		LOD 100
+		//Blend SrcAlpha One
+		ZWrite On
+		//ZTest Less
 		
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
-		#pragma surface surf Cell vertex:vert//fullforwardshadows
+		#pragma surface surf Cell vertex:vert // fullforwardshadows
 
 		// Use shader model 3.0 target, to get nicer looking lighting
 		#pragma target 3.0
@@ -83,16 +86,17 @@ Shader "Custom/Default" {
 			// Albedo comes from a texture tinted by color
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
 
-			float f_off = snoise(IN.worldPos.xyz*2.)*_FogY.z;
+			float f_off = 0.;//(tex2D(_FogNoise, IN.worldPos.xz*.05).r)*_FogY.z;
+			//snoise(IN.worldPos.xyz*2.)*_FogY.z;
 
-			float f = smoothstep(_FogY.y, _FogY.x, IN.worldPos.y+f_off);
+			float f = smoothstep(_FogY.y, _FogY.x, IN.worldPos.y + f_off);
 			f = max(f, smoothstep(_Fog.x, _Fog.y, IN.dist));
 
-			c.rgb = lerp(c.rgb, _FogColor.rgb, f);
+			c.rgba = lerp(c.rgba, _FogColor.rgba, f);
 
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables
-			o.Alpha = c.a;
+			o.Alpha = 1.;//c.a;
 		}
 		ENDCG
 	}

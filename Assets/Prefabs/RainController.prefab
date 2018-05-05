@@ -9,52 +9,80 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1651136831761456}
+  m_RootGameObject: {fileID: 1244818788328680}
   m_IsPrefabParent: 1
---- !u!1 &1651136831761456
+--- !u!1 &1244818788328680
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4730069647825486}
-  - component: {fileID: 114720121511091984}
-  - component: {fileID: 82286785780969940}
-  - component: {fileID: 114021225006146926}
-  - component: {fileID: 114564374192217984}
-  - component: {fileID: 114374644878285290}
-  - component: {fileID: 114371499585445194}
-  - component: {fileID: 114658610151910272}
+  - component: {fileID: 4457097674669198}
+  - component: {fileID: 114586274998550768}
   m_Layer: 0
-  m_Name: HelmTest
+  m_Name: RainController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4730069647825486
+--- !u!1 &1804629693427338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4985743840954264}
+  - component: {fileID: 82013293916139738}
+  - component: {fileID: 114059878133497740}
+  - component: {fileID: 114718916688813636}
+  - component: {fileID: 114182613030131532}
+  - component: {fileID: 114821582069585640}
+  m_Layer: 0
+  m_Name: HelmRain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4457097674669198
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651136831761456}
+  m_GameObject: {fileID: 1244818788328680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.11, y: 7.9, z: 1.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4985743840954264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82286785780969940
+--- !u!4 &4985743840954264
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804629693427338}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4457097674669198}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82013293916139738
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651136831761456}
+  m_GameObject: {fileID: 1804629693427338}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243784916383108906, guid: aed68d1729c0bbd4e9dabd05001a6e33,
+  OutputAudioMixerGroup: {fileID: 243592072774301118, guid: aed68d1729c0bbd4e9dabd05001a6e33,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -66,7 +94,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 15
+  MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -127,12 +155,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114021225006146926
+--- !u!114 &114059878133497740
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651136831761456}
+  m_GameObject: {fileID: 1804629693427338}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 981c2862dc2a4474b9d748a52426fab6, type: 3}
@@ -140,110 +168,97 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   synthesizerMixerGroup: {fileID: 0}
   spatializerMixerGroup: {fileID: 0}
---- !u!114 &114371499585445194
+--- !u!114 &114182613030131532
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651136831761456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a662890805e6bdd4aa1724dd2dd447c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 114564374192217984}
-  patch: {fileID: 114374644878285290}
---- !u!114 &114374644878285290
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651136831761456}
+  m_GameObject: {fileID: 1804629693427338}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f3b6e6a951d4582bfd784c7c9b4810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patchObject: {fileID: 102900000, guid: f3cced7110308084b803250505efc558, type: 3}
+  patchObject: {fileID: 102900000, guid: 488e81db7d69a4543a63aee7688a4ab4, type: 3}
   patchData:
-    license: Patch (c) by SF.  This patch is licensed under a Creative Commons Attribution
+    license: Patch (c) by .  This patch is licensed under a Creative Commons Attribution
       4.0 International License.  You should have received a copy of the license along
       with this work.  If not, see <http://creativecommons.org/licenses/by/4.0/>.
     synth_version: 0.9.0
-    patch_name: windA
-    folder_name: Desktop
-    author: SF
+    patch_name: rain
+    folder_name: Sounds
+    author: 
     settings:
-      amp_attack: 1.656345
-      amp_decay: 1.5
-      amp_release: 1.9524447
-      amp_sustain: 0.21420985
+      amp_attack: 0
+      amp_decay: 0.3529412
+      amp_release: 1.4117647
+      amp_sustain: 0.16176471
       arp_frequency: 2
       arp_gate: 0.5
       arp_octaves: 1
       arp_on: 0
       arp_pattern: 0
       arp_sync: 1
-      arp_tempo: 9
+      arp_tempo: 8
       beats_per_minute: 2
-      cross_modulation: 0
-      cutoff: 67.10084
+      cross_modulation: 2.4286129e-17
+      cutoff: 120.4
       delay_dry_wet: 0.5
       delay_feedback: 0.4
-      delay_frequency: 2
+      delay_frequency: 5
       delay_on: 0
-      delay_sync: 1
+      delay_sync: 0
       delay_tempo: 9
-      distortion_drive: 0.72
+      distortion_drive: 11.52
       distortion_mix: 1
-      distortion_on: 1
-      distortion_type: 3
-      fil_attack: 0
+      distortion_on: 0
+      distortion_type: 0
+      fil_attack: 0.7058824
       fil_decay: 1.5
-      fil_env_depth: 2.5501556
-      fil_release: 1.5
-      fil_sustain: 0.566215
-      filter_blend: 0
-      filter_drive: -9.702
+      fil_env_depth: -11.264
+      fil_release: 2.1764705
+      fil_sustain: 0.5
+      filter_blend: 1
+      filter_drive: 1.152
       filter_on: 1
       filter_saturation: 0
       filter_shelf: 0
-      filter_style: 0
+      filter_style: 1
       filter_type: 0
-      formant_on: 0
-      formant_x: 0.5
-      formant_y: 0.5
-      keytrack: 0.032814503
-      legato: 0
+      formant_on: 1
+      formant_x: 0
+      formant_y: 1
+      keytrack: 1
+      legato: 1
       mod_attack: 0
       mod_decay: 1.5
       mod_release: 1.5
       mod_sustain: 0.5
       mono_lfo_1_amplitude: 1
       mono_lfo_1_frequency: 1
-      mono_lfo_1_retrigger: 0
+      mono_lfo_1_retrigger: 2
       mono_lfo_1_sync: 1
       mono_lfo_1_tempo: 6
       mono_lfo_1_waveform: 0
       mono_lfo_2_amplitude: 1
-      mono_lfo_2_frequency: -2.4584138
-      mono_lfo_2_retrigger: 0
-      mono_lfo_2_sync: 0
-      mono_lfo_2_tempo: 9
+      mono_lfo_2_frequency: 1
+      mono_lfo_2_retrigger: 2
+      mono_lfo_2_sync: 1
+      mono_lfo_2_tempo: 7
       mono_lfo_2_waveform: 0
-      noise_volume: 0.80604285
+      noise_volume: 0.48387095
       num_steps: 8
       osc_1_transpose: 0
       osc_1_tune: 0
-      osc_1_unison_detune: 10
+      osc_1_unison_detune: 16.8
       osc_1_unison_voices: 1
-      osc_1_volume: 0.17741935
-      osc_1_waveform: 0
-      osc_2_transpose: 0
+      osc_1_volume: 0.5483871
+      osc_1_waveform: 10
+      osc_2_transpose: -7
       osc_2_tune: 0
-      osc_2_unison_detune: 10
+      osc_2_unison_detune: 14.4
       osc_2_unison_voices: 1
-      osc_2_volume: 0.20967741
+      osc_2_volume: 0.7580645
       osc_2_waveform: 0
       osc_feedback_amount: 0
       osc_feedback_transpose: 0
@@ -255,13 +270,13 @@ MonoBehaviour:
       poly_lfo_sync: 1
       poly_lfo_tempo: 7
       poly_lfo_waveform: 0
-      polyphony: 4
-      portamento: -9
+      polyphony: 8
+      portamento: -7.816
       portamento_type: 0
-      resonance: 0.6644937
-      reverb_damping: 0.5
-      reverb_dry_wet: 0.5
-      reverb_feedback: 0.9
+      resonance: 0.1418919
+      reverb_damping: 0.216
+      reverb_dry_wet: 0.312
+      reverb_feedback: 0.8
       reverb_on: 1
       step_frequency: 2
       step_seq_00: 0
@@ -296,7 +311,7 @@ MonoBehaviour:
       step_seq_29: 0
       step_seq_30: 0
       step_seq_31: 0
-      step_sequencer_retrigger: 0
+      step_sequencer_retrigger: 2
       step_sequencer_sync: 1
       step_sequencer_tempo: 7
       step_smoothing: 0
@@ -304,28 +319,58 @@ MonoBehaviour:
       stutter_on: 0
       stutter_resample_frequency: 1
       stutter_resample_sync: 1
-      stutter_resample_tempo: 6
-      stutter_softness: 0.2
+      stutter_resample_tempo: 11
+      stutter_softness: 1
       stutter_sync: 1
-      stutter_tempo: 8
+      stutter_tempo: 11
       sub_octave: 0
       sub_shuffle: 0
       sub_volume: 0
-      sub_waveform: 2
+      sub_waveform: 1
       unison_1_harmonize: 0
       unison_2_harmonize: 0
       velocity_track: 0
-      volume: 1.0297409
-      modulations:
-      - source: mono_lfo_2
-        destination: noise_volume
-        amount: 0.15938494
---- !u!114 &114564374192217984
+      volume: 0.7071068
+      modulations: []
+--- !u!114 &114586274998550768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651136831761456}
+  m_GameObject: {fileID: 1244818788328680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca28867ab678c3f43a4bca3ddccb94c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 114976893133879460, guid: bea97300ebd7dfc4389d6f3394a996fb, type: 2}
+  spawnRadius: 5
+  spawnTimeMinMax: {x: 0.001, y: 0.1}
+  controller: {fileID: 114718916688813636}
+  noteDotCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 50
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 40
+      inSlope: -22.665714
+      outSlope: -22.665714
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &114718916688813636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804629693427338}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e4430ff3452e4a85ac2530e457beb05, type: 3}
@@ -349,64 +394,16 @@ MonoBehaviour:
   synthParamValue14: 0
   synthParamValue15: 0
   synthParameters: []
---- !u!114 &114658610151910272
+--- !u!114 &114821582069585640
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651136831761456}
+  m_GameObject: {fileID: 1804629693427338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611abe8f0e04de043aab1ca350c843ff, type: 3}
+  m_Script: {fileID: 11500000, guid: a662890805e6bdd4aa1724dd2dd447c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 114564374192217984}
-  note: 64
-  velocity: 1
---- !u!114 &114720121511091984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651136831761456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a8c266df1c062429e243a7058366c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input:
-    type: 0
-    types:
-    - System.Single
-    - System.Int32
-    - UnityEngine.Vector2
-    - UnityEngine.Vector3
-    - UnityEngine.Vector4
-    obj: {fileID: 4730069647825486}
-    varName: position-x
-    componentIndex: 0
-    isMat: 0
-    componentName: 
-    go: {fileID: 0}
-    isVector: 0
-    index: 0
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 55
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 64
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  controller: {fileID: 114564374192217984}
-  parameter: 14
+  controller: {fileID: 114718916688813636}
+  patch: {fileID: 114182613030131532}
