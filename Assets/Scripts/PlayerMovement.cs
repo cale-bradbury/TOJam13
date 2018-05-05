@@ -168,11 +168,11 @@ public class PlayerMovement : MonoEx, IRaycastable
 		if (currentPitch > 0) {
 			velocityAdd = -currentPitch * dropVelocity;
 			velocityForce += (-currentPitch * Time.deltaTime * 5);
-			if (currentVelocity > 20) {
+			if (currentVelocity > 4) {
 				currentLift = currentPitch * (currentVelocity * liftFactor);
 				velocityForce -= 2 * Time.deltaTime;
 			} else
-				currentLift = -(20 - currentVelocity);
+				currentLift = -(4 - currentVelocity);
 		} else if (currentPitch < 0) {
 			velocityAdd = -currentPitch * dropVelocity * 4;
 			velocityForce += (-currentPitch * Time.deltaTime * 20);
@@ -213,7 +213,6 @@ public class PlayerMovement : MonoEx, IRaycastable
 			
 		}
 
-
 	}
 
 	void FixedUpdate ()
@@ -221,25 +220,9 @@ public class PlayerMovement : MonoEx, IRaycastable
 		rb.velocity = (transform.forward * ((velocityForce + velocityAdd) * boostFactor) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
 	}
 
-	float GetAngle (Vector3 from, Vector3 to)
-	{
-		from = new Vector3 (from.x, from.y, 20);
-		to = new Vector3 (to.x, to.y, 20);
-		return Vector3.Angle (from, to);
-	}
-
 	float GetPlaneDotProduct ()
 	{
 		return Vector3.Dot (Vector3.up, transform.forward);
-	}
-
-	void SmoothLookAt (Vector3 target, float smooth)
-	{
-		Vector3 dir = target - transform.position + transform.up;
-		Quaternion targetRotation = Quaternion.LookRotation (dir);
-		targetRotation.x = 0;
-		targetRotation.y = 0;
-		transform.rotation = Quaternion.Slerp (transform.rotation, targetRotation, Time.deltaTime * smooth);
 	}
 
 	void OnGameOver ()
@@ -258,25 +241,6 @@ public class PlayerMovement : MonoEx, IRaycastable
 		base.Disable ();
 	}
 
-
-
-	Quaternion ClampRotationAroundXAxis (Quaternion q)
-	{
-		q.x /= q.w;
-		q.y /= q.w;
-		q.z /= q.w;
-		q.w = 1.0f;
-
-		float angleZ = 2.0f * Mathf.Rad2Deg * Mathf.Atan (q.z);
-
-		angleZ = Mathf.Clamp (angleZ, -30, 30);
-
-		q.x = Mathf.Tan (0.5f * Mathf.Deg2Rad * angleZ);
-
-		return q;
-	}
-
-	
 		
 
 
