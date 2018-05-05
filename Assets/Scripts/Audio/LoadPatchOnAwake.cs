@@ -9,6 +9,11 @@ public class LoadPatchOnAwake : MonoBehaviour {
 
 	// Use this for initialization
 	void OnEnable () {
-        controller.LoadPatch(patch);
+        Invoke("Load", .1f);
 	}
+    void Load()
+    {
+        controller.LoadPatch(patch);
+
+    }
 }
