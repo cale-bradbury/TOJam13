@@ -74,6 +74,8 @@ public class PlayerMovement : MonoEx
 	[HideInInspector]
 	public float altitudePercent;
 
+	[HideInInspector]
+	public float velocityPercent;
 
 
 	public float pitchInputSpeed = 30;
@@ -106,6 +108,7 @@ public class PlayerMovement : MonoEx
 	float origVelocityForce = 50;
 	float maxAltitude = 150;
 	float hInput = 0;
+	float maxVelocity = 110;
 
 	public delegate void OnPlayerStateEvent (PlayerState nextState);
 
@@ -189,6 +192,7 @@ public class PlayerMovement : MonoEx
 	{
 		base.Reset ();
 		currentVelocity = 0;
+		currentFuel = MaxFuel;
 		velocityForce = origVelocityForce;
 		boostTrail.localScale = origTrailScale;
 
@@ -263,9 +267,16 @@ public class PlayerMovement : MonoEx
 		if (boostFactor > 1 && Input.GetKey (KeyCode.Space) == false) {
 			boostFactor -= boostDecrease * Time.deltaTime;
 		}
+
+
+
 		altitudePercent = currentAltitude / maxAltitude;
 		boostPercent = (boostFactor - 1) / (maxBoostFactor - 1);
 		fuelPercent = currentFuel / MaxFuel;
+		velocityPercent = currentVelocity / maxVelocity;
+
+
+
 		boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
 
 

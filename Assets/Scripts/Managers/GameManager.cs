@@ -206,20 +206,19 @@ public class GameManager : Singleton<GameManager>
 		case GameState.End:
 			nextState = GameState.StartGame;
 
-			FadeAndToggle (endGameUI, true, 1, 1f, 0);
+		
 
 			break;
 		case GameState.Collision:
 			FadeAndToggle (introUI, false, 0, 0.01f, 0);
 			FadeAndToggle (inGameUI, false, 0, 1f, 0);
-			StartCoroutine (Auto.Wait (1.2f, () => {
-				SetGameState (GameState.End);
-			}));
+			FadeAndToggle (endGameUI, true, 1, 1f, 1.2f);
+
 
 			fogTransform.enabled = false;
 
 
-			nextState = GameState.End;
+			nextState = GameState.StartGame;
 		
 
 			break;

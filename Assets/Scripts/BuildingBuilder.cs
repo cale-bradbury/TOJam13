@@ -52,6 +52,8 @@ public class BuildingBuilder : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (buildings.Count == 0)
+			return;
 		t -= Time.deltaTime;
 		if (t < 0) {
 			t = spawnEverySeconds;
@@ -78,5 +80,6 @@ public class BuildingBuilder : MonoBehaviour
 			GameObject.Destroy (buildings [i]);
 			buildings.RemoveAt (i);
 		}
+		buildings.Clear ();
 	}
 }
