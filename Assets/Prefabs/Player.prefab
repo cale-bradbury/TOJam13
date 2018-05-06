@@ -2198,6 +2198,8 @@ MonoBehaviour:
   CameraTargetLookSmoothing: 0.2
   planeRoot: {fileID: 4640851475080996}
   boostTrail: {fileID: 4269523247182438}
+  pullUp: {fileID: 0}
+  danger: {fileID: 0}
   boostLight: {fileID: 108288687018669756}
   currentPitch: 0
   currentVelocity: 0
@@ -2208,10 +2210,11 @@ MonoBehaviour:
   boostPercent: 0
   fuelPercent: 0
   altitudePercent: 0
+  velocityPercent: 0
   pitchInputSpeed: 75.48
   smoothTime: 10
-  liftFactor: 1.2
-  fuelConsumptionFactor: 10.27
+  liftFactor: 1.1
+  fuelConsumptionFactor: 30
   MaxFuel: 100
   velocityForce: 50
   lateralVelocityForce: 50
@@ -2220,7 +2223,7 @@ MonoBehaviour:
   boostDecrease: 3
   trailMin: {x: 1, y: 1, z: 0.05}
   trailMax: {x: 1, y: 1, z: 0.2}
-  trailMaxBoost: {x: 0.5, y: 0.5, z: 1.4}
+  trailMaxBoost: {x: 1, y: 1, z: 1.2}
   minLight: 0.2
   maxLight: 3.88
   trailCurve:
