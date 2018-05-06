@@ -186,11 +186,7 @@ public class GameManager : Singleton<GameManager>
 //				SetGameState (nextState);
 //			}));
 			break;
-		case GameState.MainMenu:
-
-
-			nextState = GameState.StartGame;
-			break;
+		
 		case GameState.StartGame:
 			FadeAndToggle (introUI, false, 0, 0.25f, 0);
 			FadeAndToggle (inGameUI, true, 1, 0.5f, 0.25f);
@@ -209,15 +205,21 @@ public class GameManager : Singleton<GameManager>
 			break;
 		case GameState.End:
 			nextState = GameState.StartGame;
+
+			FadeAndToggle (endGameUI, true, 1, 1f, 0);
+
 			break;
 		case GameState.Collision:
 			FadeAndToggle (introUI, false, 0, 0.01f, 0);
 			FadeAndToggle (inGameUI, false, 0, 1f, 0);
-			FadeAndToggle (endGameUI, true, 1, 1f, 1.2f);
+			StartCoroutine (Auto.Wait (1.2f, () => {
+				SetGameState (GameState.End);
+			}));
+
 			fogTransform.enabled = false;
 
 
-			nextState = GameState.StartGame;
+			nextState = GameState.End;
 		
 
 			break;

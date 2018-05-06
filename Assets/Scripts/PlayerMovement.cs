@@ -117,7 +117,7 @@ public class PlayerMovement : MonoEx
 	void HandleOnStateChange (GameState state)
 	{
 		switch (state) {
-		case GameState.MainMenu:
+		case GameState.Intro:
 //			Disable ();
 			canInput = false;
 			rb.isKinematic = true;
