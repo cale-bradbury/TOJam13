@@ -72,6 +72,11 @@ public class PlayerMovement : MonoEx, IRaycastable
 	public float currentFuel = 100;
 
 
+	[Header ("FOR REFLECTION :)")]
+	public float boostPercent;
+
+
+
 	public float pitchInputSpeed = 30;
 	public float smoothTime = 10;
 
@@ -126,10 +131,7 @@ public class PlayerMovement : MonoEx, IRaycastable
 		_input = _inputType;
 	}
 
-    #endregion
-
-    [Header("FOR REFLECTION :)")]
-    public float boostPercent;
+	#endregion
 
 	void HandleOnStateChange (GameState state)
 	{
@@ -218,9 +220,9 @@ public class PlayerMovement : MonoEx, IRaycastable
 		if (boostFactor > 1 && Input.GetKey (KeyCode.Space) == false) {
 			boostFactor -= boostDecrease * Time.deltaTime;
 		}
-        boostPercent = (boostFactor - 1) / (maxBoostFactor - 1);
+		boostPercent = (boostFactor - 1) / (maxBoostFactor - 1);
 
-        boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
+		boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
 
 
 		//ROLL
