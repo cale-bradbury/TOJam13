@@ -6,6 +6,7 @@ public class HelmSurfaceDistance : MonoBehaviour {
 
     public AudioHelm.HelmController controller;
     public AudioHelm.Param param;
+    public LayerMask layerMask;
     public AnimationCurve distanceToValue = AnimationCurve.Linear(0,1,1,0);
     public AudioSource source;
     public float panAmount = .2f;
@@ -24,9 +25,9 @@ public class HelmSurfaceDistance : MonoBehaviour {
         float distLeft, distRight;
         distLeft = distRight = 100000;
 
-        if(Physics.Raycast(transform.position, -transform.right, out hit))
+        if(Physics.Raycast(transform.position, -transform.right, out hit,100,layerMask))
             distLeft = hit.distance;
-        if(Physics.Raycast(transform.position, transform.right, out hit))
+        if(Physics.Raycast(transform.position, transform.right, out hit, 100, layerMask))
             distRight = hit.distance;
 
         float dist = Mathf.Min(distRight, distLeft);
