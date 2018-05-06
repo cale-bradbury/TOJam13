@@ -108,6 +108,33 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!83 &19741407
+AudioClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: helm
+  m_LoadType: 0
+  m_Channels: 1
+  m_Frequency: 48000
+  m_BitsPerSample: 32
+  m_Length: 0
+  m_IsTrackerFormat: 0
+  m_Ambisonic: 0
+  m_SubsoundIndex: 0
+  m_PreloadAudioData: 1
+  m_LoadInBackground: 0
+  m_Legacy3D: 0
+  m_Resource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_CompressionFormat: 0
+  m_EditorResource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_EditorCompressionFormat: 0
 --- !u!1 &95555570
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +252,33 @@ AudioClip:
     m_Offset: 0
     m_Size: 0
   m_EditorCompressionFormat: 0
+--- !u!83 &424909267
+AudioClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: helm
+  m_LoadType: 0
+  m_Channels: 1
+  m_Frequency: 48000
+  m_BitsPerSample: 32
+  m_Length: 0
+  m_IsTrackerFormat: 0
+  m_Ambisonic: 0
+  m_SubsoundIndex: 0
+  m_PreloadAudioData: 1
+  m_LoadInBackground: 0
+  m_Legacy3D: 0
+  m_Resource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_CompressionFormat: 0
+  m_EditorResource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_EditorCompressionFormat: 0
 --- !u!1001 &487687469
 Prefab:
   m_ObjectHideFlags: 0
@@ -281,33 +335,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4895005460795548, guid: 74cd3d044d5bd4f5a9c095eb845b62d8,
     type: 2}
   m_PrefabInternal: {fileID: 654596390}
---- !u!83 &491559581
-AudioClip:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: helm
-  m_LoadType: 0
-  m_Channels: 1
-  m_Frequency: 48000
-  m_BitsPerSample: 32
-  m_Length: 0
-  m_IsTrackerFormat: 0
-  m_Ambisonic: 0
-  m_SubsoundIndex: 0
-  m_PreloadAudioData: 1
-  m_LoadInBackground: 0
-  m_Legacy3D: 0
-  m_Resource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_CompressionFormat: 0
-  m_EditorResource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_EditorCompressionFormat: 0
 --- !u!1001 &512630068
 Prefab:
   m_ObjectHideFlags: 0
@@ -452,33 +479,6 @@ Transform:
   m_Father: {fileID: 822969110}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!83 &599549821
-AudioClip:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: helm
-  m_LoadType: 0
-  m_Channels: 1
-  m_Frequency: 48000
-  m_BitsPerSample: 32
-  m_Length: 0
-  m_IsTrackerFormat: 0
-  m_Ambisonic: 0
-  m_SubsoundIndex: 0
-  m_PreloadAudioData: 1
-  m_LoadInBackground: 0
-  m_Legacy3D: 0
-  m_Resource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_CompressionFormat: 0
-  m_EditorResource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_EditorCompressionFormat: 0
 --- !u!1 &601296246
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,33 +832,6 @@ Transform:
   m_Father: {fileID: 822969110}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!83 &1124217100
-AudioClip:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: helm
-  m_LoadType: 0
-  m_Channels: 1
-  m_Frequency: 48000
-  m_BitsPerSample: 32
-  m_Length: 0
-  m_IsTrackerFormat: 0
-  m_Ambisonic: 0
-  m_SubsoundIndex: 0
-  m_PreloadAudioData: 1
-  m_LoadInBackground: 0
-  m_Legacy3D: 0
-  m_Resource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_CompressionFormat: 0
-  m_EditorResource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_EditorCompressionFormat: 0
 --- !u!4 &1173771548 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4640851475080996, guid: 74cd3d044d5bd4f5a9c095eb845b62d8,
@@ -1114,11 +1087,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.modulations.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4696889855412902, guid: 6a7e568448391214f8e64e0edbd10cf2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1155,317 +1123,15 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 1416310431}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
+      objectReference: {fileID: 1734159749}
+    - target: {fileID: 114556583931723570, guid: 6a7e568448391214f8e64e0edbd10cf2,
         type: 2}
-      propertyPath: patchData.patch_name
-      value: chargeB
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.amp_attack
-      value: 0.35248163
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.amp_decay
-      value: 0.8235294
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.amp_release
-      value: 0.8235294
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.amp_sustain
-      value: 0.32352942
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.arp_gate
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.arp_octaves
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.cross_modulation
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.cutoff
-      value: 65.85294
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.delay_dry_wet
-      value: 0.22819512
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.delay_feedback
-      value: 0.696
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.delay_on
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.distortion_drive
-      value: 18.720007
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.fil_attack
-      value: 0.64705884
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.fil_env_depth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.fil_release
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.fil_sustain
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.filter_drive
-      value: -12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.formant_x
-      value: 0.46376812
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.formant_y
-      value: 0.08256881
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.keytrack
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.legato
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.mod_attack
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.mono_lfo_1_amplitude
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.mono_lfo_1_retrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.mono_lfo_1_tempo
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.mono_lfo_1_waveform
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_1_transpose
-      value: -24
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_1_tune
-      value: -0.11199999
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_1_unison_voices
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_1_volume
-      value: 0.24763027
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_1_waveform
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_2_transpose
-      value: -12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_2_tune
-      value: 0.12800002
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_2_unison_detune
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_2_unison_voices
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_2_volume
-      value: 0.5550783
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_2_waveform
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_feedback_amount
-      value: -0.38400006
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_feedback_transpose
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.osc_feedback_tune
-      value: -0.63199997
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.pitch_bend_range
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.polyphony
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.portamento
-      value: -6.6639996
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.resonance
-      value: 0.4513889
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.reverb_damping
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.reverb_dry_wet
-      value: 0.5159959
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.reverb_feedback
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.stutter_frequency
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.stutter_resample_frequency
-      value: 1.0000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.stutter_softness
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.sub_volume
-      value: 0.5713423
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.sub_waveform
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.unison_2_harmonize
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.velocity_track
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114090751874539366, guid: 6a7e568448391214f8e64e0edbd10cf2,
-        type: 2}
-      propertyPath: patchData.settings.volume
-      value: 0.83017284
+      propertyPath: layer.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a7e568448391214f8e64e0edbd10cf2, type: 2}
   m_IsPrefabParent: 0
---- !u!83 &1416310431
-AudioClip:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: helm
-  m_LoadType: 0
-  m_Channels: 1
-  m_Frequency: 48000
-  m_BitsPerSample: 32
-  m_Length: 0
-  m_IsTrackerFormat: 0
-  m_Ambisonic: 0
-  m_SubsoundIndex: 0
-  m_PreloadAudioData: 1
-  m_LoadInBackground: 0
-  m_Legacy3D: 0
-  m_Resource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_CompressionFormat: 0
-  m_EditorResource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_EditorCompressionFormat: 0
 --- !u!114 &1486577963 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114429428929587656, guid: 31fd5bcda9e856d49bae715b67a242c4,
@@ -1935,7 +1601,7 @@ Prefab:
     - {fileID: 9200000, guid: baec086904791744185aaa07a6cf55c2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: baec086904791744185aaa07a6cf55c2, type: 2}
   m_IsPrefabParent: 0
---- !u!83 &1716348509
+--- !u!83 &1734159749
 AudioClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -2171,6 +1837,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a943a88e0ec754e41957d4b37fd61e88, type: 2}
   m_IsPrefabParent: 0
+--- !u!83 &1899707927
+AudioClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: helm
+  m_LoadType: 0
+  m_Channels: 1
+  m_Frequency: 48000
+  m_BitsPerSample: 32
+  m_Length: 0
+  m_IsTrackerFormat: 0
+  m_Ambisonic: 0
+  m_SubsoundIndex: 0
+  m_PreloadAudioData: 1
+  m_LoadInBackground: 0
+  m_Legacy3D: 0
+  m_Resource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_CompressionFormat: 0
+  m_EditorResource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_EditorCompressionFormat: 0
 --- !u!1 &1997476082
 GameObject:
   m_ObjectHideFlags: 0

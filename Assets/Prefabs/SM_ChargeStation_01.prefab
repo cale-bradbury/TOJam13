@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 33327643008187734}
   - component: {fileID: 64761729700411588}
   - component: {fileID: 114697723483561110}
+  - component: {fileID: 114823315409163020}
   m_Layer: 0
   m_Name: Collider0 (2)
   m_TagString: Untagged
@@ -73,6 +74,7 @@ GameObject:
   - component: {fileID: 33697842008450868}
   - component: {fileID: 64281302715812836}
   - component: {fileID: 114461348448247830}
+  - component: {fileID: 114927885708833296}
   m_Layer: 0
   m_Name: Collider0 (4)
   m_TagString: Untagged
@@ -160,6 +162,7 @@ GameObject:
   - component: {fileID: 33276276301568322}
   - component: {fileID: 64401394634922608}
   - component: {fileID: 114639618683939800}
+  - component: {fileID: 114814751684274962}
   m_Layer: 0
   m_Name: Collider0 (1)
   m_TagString: Untagged
@@ -178,6 +181,7 @@ GameObject:
   - component: {fileID: 33822779197989342}
   - component: {fileID: 64547974689171344}
   - component: {fileID: 114678026722878056}
+  - component: {fileID: 114556583931723570}
   m_Layer: 0
   m_Name: Collider0
   m_TagString: Untagged
@@ -234,6 +238,7 @@ GameObject:
   - component: {fileID: 33739337495978312}
   - component: {fileID: 64410417431098018}
   - component: {fileID: 114615872157541840}
+  - component: {fileID: 114312759084927106}
   m_Layer: 0
   m_Name: Collider0 (3)
   m_TagString: Untagged
@@ -1149,6 +1154,22 @@ MonoBehaviour:
     go: {fileID: 0}
     isVector: 0
     index: 0
+--- !u!114 &114312759084927106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909621339530108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3d1f0b80b279f4a9926c382b73b243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
+  score: 111
+  fuel: 10
 --- !u!114 &114365188230945738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1263,6 +1284,22 @@ MonoBehaviour:
     go: {fileID: 0}
     isVector: 0
     index: 0
+--- !u!114 &114556583931723570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1567802859759802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3d1f0b80b279f4a9926c382b73b243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 512
+  score: 111
+  fuel: 10
 --- !u!114 &114596342608837348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1356,6 +1393,38 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &114814751684274962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380276384799382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3d1f0b80b279f4a9926c382b73b243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
+  score: 111
+  fuel: 10
+--- !u!114 &114823315409163020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045751560711098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3d1f0b80b279f4a9926c382b73b243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
+  score: 111
+  fuel: 10
 --- !u!114 &114847583006566778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1369,3 +1438,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   synthesizerMixerGroup: {fileID: 0}
   spatializerMixerGroup: {fileID: 0}
+--- !u!114 &114927885708833296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141641588218346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3d1f0b80b279f4a9926c382b73b243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
+  score: 111
+  fuel: 10

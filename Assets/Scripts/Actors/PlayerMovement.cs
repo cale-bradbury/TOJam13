@@ -16,6 +16,8 @@ public enum PlayerState
 		
 public class PlayerMovement : MonoEx
 {
+    public static PlayerMovement instance;
+
 	public enum AnimState
 	{
 		Idle = 0,
@@ -189,6 +191,7 @@ public class PlayerMovement : MonoEx
 	protected override void Awake ()
 	{
 		base.Awake ();
+        instance = this;
 		GameManager.OnStateChange += HandleOnStateChange;
 	}
 
@@ -220,6 +223,11 @@ public class PlayerMovement : MonoEx
 		boostTrail.localScale = origTrailScale;
 
 	}
+
+    public void AddFuel(float fuel)
+    {
+        currentFuel = Mathf.Min(currentFuel + fuel, MaxFuel);
+    }
 
 
 
