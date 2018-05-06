@@ -49,6 +49,8 @@ public class PlayerMovement : MonoEx
 
 	public Transform planeRoot;
 	public Transform boostTrail;
+	public FlickerElement pullUp;
+	public FlickerElement danger;
 	public Light boostLight;
 
 	//	[Header ("FOR REFLECTION :)")]
@@ -213,7 +215,7 @@ public class PlayerMovement : MonoEx
 
 		if (currentPitch > 0) {
 			velocityAdd = -currentPitch * dropVelocity;
-			velocityForce += (-currentPitch * Time.deltaTime * 12);
+			velocityForce += (-currentPitch * Time.deltaTime * 18);
 			if (currentVelocity > 20) {
 				currentLift = currentPitch * (currentVelocity * liftFactor);
 				velocityForce -= 2 * Time.deltaTime;
@@ -285,7 +287,19 @@ public class PlayerMovement : MonoEx
 		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
 		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
 
+		if (transform.position.y < 10) {
+			pullUp.gameObject.SetActive (true);
+		}
+		if (transform.position.y > 10) {
+			pullUp.gameObject.SetActive (false);
+		}
 
+		if (transform.position.y < 4) {
+			danger.gameObject.SetActive (true);
+		}
+		if (transform.position.y > 4) {
+			danger.gameObject.SetActive (false);
+		}
 
 		if (transform.position.y < 2 && currentState == PlayerState.Flying) {
 			SetState (PlayerState.Danger);
