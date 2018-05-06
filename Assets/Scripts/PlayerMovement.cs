@@ -39,20 +39,31 @@ public class PlayerMovement : MonoEx, IRaycastable
 		Takeoff = 4,
 		Null = 5,
 	}
-	
-	
-	//roll
-	//pitch
-	//current velocity
-	//
-	//boost
-	//
+
+
+    //roll
+    //pitch
+    //current velocity
+    //
+    //boost
+    //
+
+    public Transform CameraTargetLook;
+    public Vector3 CameraTargetLookDefault;
+    public Vector3 CameraTargetLookDown;
+    public Vector3 CameraTargetLookUp;
+    public Vector3 CameraTargetLookLeft;
+    public Vector3 CameraTargetLookRight;
+    public float CameraTargetLookSmoothing = .2f;
 
 
 
-	bool isPlayable = true;
+
+    bool isPlayable = true;
 
 	public Transform planeRoot;
+	public Transform boostTrail;
+	public Light boostLight;
 
 
 	//THESE ARE THE PUBLIC VARS FOR CALE
@@ -85,7 +96,10 @@ public class PlayerMovement : MonoEx, IRaycastable
 	public float boostIncrease = 1;
 	public float boostDecrease = 3;
 
-
+	Vector3 origTrailScale;
+	public Vector3 trailMin, trailMax, trailMaxBoost;
+	public float minLight, maxLight;
+	public AnimationCurve trailCurve;
 
 	float dropVelocity = 20;
 	float velocityAdd = 0;
@@ -121,7 +135,10 @@ public class PlayerMovement : MonoEx, IRaycastable
 		_input = _inputType;
 	}
 
-	#endregion
+    #endregion
+
+    [Header("FOR REFLECTION :)")]
+    public float boostPercent;
 
 	void HandleOnStateChange (GameState state)
 	{
@@ -151,6 +168,8 @@ public class PlayerMovement : MonoEx, IRaycastable
 	{
 		base.Init ();
 		origVelocityForce = velocityForce;
+		origTrailScale = boostTrail.localScale;
+		boostTrail.localScale = trailMin;
 
 	}
 
@@ -168,30 +187,54 @@ public class PlayerMovement : MonoEx, IRaycastable
 		if (currentPitch > 0) {
 			velocityAdd = -currentPitch * dropVelocity;
 			velocityForce += (-currentPitch * Time.deltaTime * 5);
-			if (currentVelocity > 4) {
+			if (currentVelocity > 20) {
 				currentLift = currentPitch * (currentVelocity * liftFactor);
 				velocityForce -= 2 * Time.deltaTime;
 			} else
-				currentLift = -(4 - currentVelocity);
+				currentLift = -(20 - currentVelocity);
 		} else if (currentPitch < 0) {
 			velocityAdd = -currentPitch * dropVelocity * 4;
 			velocityForce += (-currentPitch * Time.deltaTime * 20);
 			currentLift = 0;
 		}
 
-
+        Vector3 target = CameraTargetLookDefault;
 
 		if (canInput) {
 			
 			float vInput = Input.GetAxis ("Vertical");
+			hInput = Input.GetAxis ("Horizontal");
 
 			if (vInput != 0) {
 				transform.Rotate (transform.right, Time.deltaTime * vInput * pitchInputSpeed, Space.Self);
-			}
-		}
+                if (vInput > 0)
+                {
+                    target = Vector3.Lerp(target, CameraTargetLookUp, vInput);
+                }
+                else
+                {
+                    target = Vector3.Lerp(target, CameraTargetLookDown, -vInput);
+                }
+            }
+            Vector3 horizontalAdtionalTarget = Vector3.zero;
+            if (hInput > 0)
+            {
+                horizontalAdtionalTarget = Vector3.Lerp(horizontalAdtionalTarget, CameraTargetLookRight, hInput);
+            }
+            else
+            {
+                horizontalAdtionalTarget = Vector3.Lerp(horizontalAdtionalTarget, CameraTargetLookLeft, -hInput);
+            }
+            target += horizontalAdtionalTarget;
+        }
+        CameraTargetLook.localPosition = Vector3.Lerp(CameraTargetLook.localPosition, target, CameraTargetLookSmoothing);
+
+        float t = currentVelocity / 90;
+		boostTrail.localScale = Vector3.Lerp (trailMin, trailMax, t);
 
 		//BOOST
 		if (Input.GetKey (KeyCode.Space) && currentFuel > 0) {
+			boostTrail.localScale = Vector3.Lerp (trailMax, trailMaxBoost, (boostFactor - 1) / (maxBoostFactor - 1));
 			currentFuel -= fuelConsumptionFactor * Time.deltaTime;
 			if (velocityForce < origVelocityForce) {
 				velocityForce += 15 * Time.deltaTime;
@@ -203,20 +246,21 @@ public class PlayerMovement : MonoEx, IRaycastable
 		if (boostFactor > 1 && Input.GetKey (KeyCode.Space) == false) {
 			boostFactor -= boostDecrease * Time.deltaTime;
 		}
+        boostPercent = (boostFactor - 1) / (maxBoostFactor - 1);
+
+        boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
+
 
 		//ROLL
-		hInput = Input.GetAxis ("Horizontal");
+
 		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
 		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
-
-		if (hInput != 0) {
-			
-		}
 
 	}
 
 	void FixedUpdate ()
 	{
+
 		rb.velocity = (transform.forward * ((velocityForce + velocityAdd) * boostFactor) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
 	}
 

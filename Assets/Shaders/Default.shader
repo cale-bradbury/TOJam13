@@ -71,7 +71,8 @@ Shader "Custom/Default" {
 			diff /= LightingSteps;
 			half4 c;
 			c.rgb = (s.Albedo * _LightColor0.rgb * diff)*atten;// +_LightColor0.rgb * spec) * atten;
-			c.a = s.Alpha;
+			c.rgb =  lerp(c.rgb, s.Albedo, s.Alpha);
+			c.a = 1.;//;
 			return c;
 		}
 
@@ -91,12 +92,11 @@ Shader "Custom/Default" {
 
 			float f = smoothstep(_FogY.y, _FogY.x, IN.worldPos.y + f_off);
 			f = max(f, smoothstep(_Fog.x, _Fog.y, IN.dist));
-
 			c.rgba = lerp(c.rgba, _FogColor.rgba, f);
 
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables
-			o.Alpha = 1.;//c.a;
+			o.Alpha = f;//c.a;
 		}
 		ENDCG
 	}
