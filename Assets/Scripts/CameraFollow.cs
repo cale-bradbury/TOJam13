@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class CameraFollow : MonoEx
 {
 
-    public Transform targetPosition;
-    public Transform targetLookAt;
+	public Transform targetPosition;
+	public Transform targetLookAt;
 
 
 	public Transform target;
@@ -16,15 +16,55 @@ public class CameraFollow : MonoBehaviour
 	public float minY, maxY;
 	public Vector3 offset;
 	Vector3 m_targetPosition = Vector3.zero;
+	bool followPlayer = true;
+
+
+	void Awake ()
+	{
+		GameManager.OnStateChange += HandleStateChange;
+	}
+
+	void OnDestroy ()
+	{
+		GameManager.OnStateChange -= HandleStateChange;
+	}
+
+
+
+	void HandleStateChange (GameState state)
+	{
+		if (state == GameState.Collision) {
+			followPlayer = false;	
+		} else if (state == GameState.End) {
+			
+		} else if (state == GameState.StartGame || state == GameState.Game) {
+			Reset ();
+			Enable ();
+			followPlayer = true;
+		}
+	}
 
 	void LateUpdate ()
 	{
+		if (followPlayer) {
+			
+			Vector3 targetPos = targetPosition.position;
+			if (targetPos.y < minY) {
+				targetPos.y = minY;
+			}
+			if (targetPos.y > maxY) {
+				targetPos.y = maxY;
+			}
+			transform.position = targetPos;
+		}
+		Quaternion rot = transform.rotation;
+		transform.LookAt (targetLookAt);
+		Vector3 temp = rot.eulerAngles;
 
-        transform.position = targetPosition.position;
-        Quaternion rot = transform.rotation;
-        transform.LookAt(targetLookAt);
-        transform.rotation = Quaternion.Lerp(rot, transform.rotation, Time.deltaTime*4);
-        return;
+		temp.z = target.rotation.eulerAngles.z;
+		rot.eulerAngles = temp;
+		transform.rotation = Quaternion.Lerp (rot, transform.rotation, Time.deltaTime * 4);
+		return;
 
 //		Vector3 desiredPosition = target.position + offset;
 //
@@ -39,20 +79,20 @@ public class CameraFollow : MonoBehaviour
 //
 
 		// Get the inverse of the players velocity
-		Vector3 direction = -(target.transform.GetComponent<Rigidbody> ().velocity.normalized);
+//		Vector3 direction = -(target.transform.GetComponent<Rigidbody> ().velocity.normalized);
 
 		//  Set the position of the camera relative to the player, with some distance and height
-		m_targetPosition = target.transform.position + (direction * offset.z) + (Vector3.up * offset.y) + (Vector3.right * Input.GetAxis ("Horizontal"));
+//		m_targetPosition = target.transform.position + (direction * offset.z) + (Vector3.up * offset.y) + (Vector3.right * Input.GetAxis ("Horizontal"));
 //		m_targetPosition.x += Input.GetAxis ("Horizontal");
 
 
 
 		// Set camera position                
-		transform.position = m_targetPosition;
+//		transform.position = m_targetPosition;
 
 		// Let the camera look at the player                    
 //		SmoothLookAt (target.position, smoothLookSpeed);
-		transform.LookAt (target.transform);
+//		transform.LookAt (target.transform);
 
 	}
 

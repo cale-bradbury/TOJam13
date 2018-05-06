@@ -2,33 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-		
-/// <summary>
-/// NOTES FOR MYSELF FOR TOMORROW::::
-/// 
-/// Make velocity manually instead of add force.
-/// plane should immediately adjust y from angle of attack 
-/// (if plane tilts above 0, should immediately go up)
-/// all y calculations for plane should be made explicitly by its angle 
-/// unless under a specified stall speed at which point negative lift factor gradually worsens
-/// 
-/// need to calculate all needed forces and apply them manually in fixedupdate per frame
-/// </summary>
+	
 	
 public enum PlayerState
 {
 	NullState,
 	Intro,
 	Flying,
-	Landing,
-	Landed,
-	Crashed,
-	Takeoff,
-	Dead
+	Danger,
+	Crashed
 }
 
 		
-public class PlayerMovement : MonoEx, IRaycastable
+public class PlayerMovement : MonoEx
 {
 	public enum AnimState
 	{
@@ -41,48 +27,52 @@ public class PlayerMovement : MonoEx, IRaycastable
 	}
 
 
-    //roll
-    //pitch
-    //current velocity
-    //
-    //boost
-    //
+	//roll
+	//pitch
+	//current velocity
+	//
+	//boost
+	//
 
-    public Transform CameraTargetLook;
-    public Vector3 CameraTargetLookDefault;
-    public Vector3 CameraTargetLookDown;
-    public Vector3 CameraTargetLookUp;
-    public Vector3 CameraTargetLookLeft;
-    public Vector3 CameraTargetLookRight;
-    public float CameraTargetLookSmoothing = .2f;
-
-
+	public Transform CameraTargetLook;
+	public Vector3 CameraTargetLookDefault;
+	public Vector3 CameraTargetLookDown;
+	public Vector3 CameraTargetLookUp;
+	public Vector3 CameraTargetLookLeft;
+	public Vector3 CameraTargetLookRight;
+	public float CameraTargetLookSmoothing = .2f;
 
 
-    bool isPlayable = true;
+
+
+	bool isPlayable = true;
 
 	public Transform planeRoot;
 	public Transform boostTrail;
 	public Light boostLight;
 
-
+	//	[Header ("FOR REFLECTION :)")]
 	//THESE ARE THE PUBLIC VARS FOR CALE
 	[HideInInspector]
 	public float currentPitch;
-	[HideInInspector]
+	//	[HideInInspector]
 	public float currentVelocity;
 	[HideInInspector]
 	public float currentLift;
 	[HideInInspector]
-	public float currentAltitutde;
+	public float currentAltitude;
 	[HideInInspector]
 	public float currentDistance;
 	[HideInInspector]
 	public float currentFuel = 100;
-
-
-	[Header ("FOR REFLECTION :)")]
+	[HideInInspector]
 	public float boostPercent;
+
+	[HideInInspector]
+	public float fuelPercent;
+
+	[HideInInspector]
+	public float altitudePercent;
 
 
 
@@ -106,49 +96,34 @@ public class PlayerMovement : MonoEx, IRaycastable
 	public float minLight, maxLight;
 	public AnimationCurve trailCurve;
 
+
+	[HideInInspector]
+	public PlayerState currentState;
+
 	float dropVelocity = 20;
 	float velocityAdd = 0;
 	float boostFactor = 1;
 	float origVelocityForce = 50;
+	float maxAltitude = 150;
 	float hInput = 0;
 
 	public delegate void OnPlayerStateEvent (PlayerState nextState);
 
 	public static event OnPlayerStateEvent OnPlayerStateChange;
 
-	#region inputStuff
 
-	//	[HideInInspector]
-	public bool canInput = true;
-
-	public LayerMask mask;
-
-
-	public IUserInputProxy _input;
-	InputModel _i = new InputModel ();
-
-
-	IRaycastable[] raycasters;
-
-	public float hitDistance { get; set; }
-
-	public RaycastHit2D hit { get; set; }
-
-
-	public void SetInputType (IUserInputProxy _inputType)
-	{
-		_input = _inputType;
-	}
-
-	#endregion
+	public bool canInput = false;
 
 	void HandleOnStateChange (GameState state)
 	{
 		switch (state) {
 		case GameState.MainMenu:
-			Disable ();
+//			Disable ();
+			canInput = false;
+			rb.isKinematic = true;
 			break;
 		case GameState.StartGame:
+			Reset ();
 			Enable ();
 			canInput = true;
 			
@@ -157,6 +132,31 @@ public class PlayerMovement : MonoEx, IRaycastable
 			Reset ();
 			break;
 		case GameState.Collision:
+			SetState (PlayerState.Crashed);
+			break;
+		}
+	}
+
+	void HandlePlayerStateChange (PlayerState state)
+	{
+		switch (state) {
+		case PlayerState.Intro:
+			Enable ();
+			canInput = false;
+			break;
+		case PlayerState.Flying:
+			canInput = true;
+			break;
+		case PlayerState.Danger:
+			canInput = true;
+			break;
+		case PlayerState.Crashed:
+			canInput = false;
+			StartCoroutine (Auto.Wait (2, () => {
+				
+				Disable ();
+				Reset ();
+			}));
 			break;
 		}
 	}
@@ -164,23 +164,44 @@ public class PlayerMovement : MonoEx, IRaycastable
 	protected override void Awake ()
 	{
 		base.Awake ();
+		GameManager.OnStateChange += HandleOnStateChange;
+	}
+
+	void OnDestroy ()
+	{
+		GameManager.OnStateChange -= HandleOnStateChange;
 	}
 
 	protected override void Init ()
 	{
 		base.Init ();
+		rb.isKinematic = true;
+		currentState = PlayerState.NullState;
+		SetState (PlayerState.Intro);
 		origVelocityForce = velocityForce;
 		origTrailScale = boostTrail.localScale;
 		boostTrail.localScale = trailMin;
+		canInput = false;
 
 	}
+
+	public override void Reset ()
+	{
+		base.Reset ();
+		currentVelocity = 0;
+		velocityForce = origVelocityForce;
+		boostTrail.localScale = origTrailScale;
+
+	}
+
+
 
 	void Update ()
 	{
 		
 		var localVel = transform.InverseTransformDirection (new Vector3 (rb.velocity.x, 0, rb.velocity.z));
 		currentVelocity = localVel.z;
-
+		currentAltitude = transform.position.y;
 
 
 		//PITCH
@@ -188,7 +209,7 @@ public class PlayerMovement : MonoEx, IRaycastable
 
 		if (currentPitch > 0) {
 			velocityAdd = -currentPitch * dropVelocity;
-			velocityForce += (-currentPitch * Time.deltaTime * 5);
+			velocityForce += (-currentPitch * Time.deltaTime * 12);
 			if (currentVelocity > 20) {
 				currentLift = currentPitch * (currentVelocity * liftFactor);
 				velocityForce -= 2 * Time.deltaTime;
@@ -200,7 +221,7 @@ public class PlayerMovement : MonoEx, IRaycastable
 			currentLift = 0;
 		}
 
-        Vector3 target = CameraTargetLookDefault;
+		Vector3 target = CameraTargetLookDefault;
 
 		if (canInput) {
 			
@@ -209,29 +230,23 @@ public class PlayerMovement : MonoEx, IRaycastable
 
 			if (vInput != 0) {
 				transform.Rotate (transform.right, Time.deltaTime * vInput * pitchInputSpeed, Space.Self);
-                if (vInput > 0)
-                {
-                    target = Vector3.Lerp(target, CameraTargetLookUp, vInput);
-                }
-                else
-                {
-                    target = Vector3.Lerp(target, CameraTargetLookDown, -vInput);
-                }
-            }
-            Vector3 horizontalAdtionalTarget = Vector3.zero;
-            if (hInput > 0)
-            {
-                horizontalAdtionalTarget = Vector3.Lerp(horizontalAdtionalTarget, CameraTargetLookRight, hInput);
-            }
-            else
-            {
-                horizontalAdtionalTarget = Vector3.Lerp(horizontalAdtionalTarget, CameraTargetLookLeft, -hInput);
-            }
-            target += horizontalAdtionalTarget;
-        }
-        CameraTargetLook.localPosition = Vector3.Lerp(CameraTargetLook.localPosition, target, CameraTargetLookSmoothing);
+				if (vInput > 0) {
+					target = Vector3.Lerp (target, CameraTargetLookUp, vInput);
+				} else {
+					target = Vector3.Lerp (target, CameraTargetLookDown, -vInput);
+				}
+			}
+			Vector3 horizontalAdtionalTarget = Vector3.zero;
+			if (hInput > 0) {
+				horizontalAdtionalTarget = Vector3.Lerp (horizontalAdtionalTarget, CameraTargetLookRight, hInput);
+			} else {
+				horizontalAdtionalTarget = Vector3.Lerp (horizontalAdtionalTarget, CameraTargetLookLeft, -hInput);
+			}
+			target += horizontalAdtionalTarget;
+		}
+		CameraTargetLook.localPosition = Vector3.Lerp (CameraTargetLook.localPosition, target, CameraTargetLookSmoothing);
 
-        float t = currentVelocity / 90;
+		float t = currentVelocity / 90;
 		boostTrail.localScale = Vector3.Lerp (trailMin, trailMax, t);
 
 		//BOOST
@@ -248,8 +263,9 @@ public class PlayerMovement : MonoEx, IRaycastable
 		if (boostFactor > 1 && Input.GetKey (KeyCode.Space) == false) {
 			boostFactor -= boostDecrease * Time.deltaTime;
 		}
+		altitudePercent = currentAltitude / maxAltitude;
 		boostPercent = (boostFactor - 1) / (maxBoostFactor - 1);
-
+		fuelPercent = currentFuel / MaxFuel;
 		boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
 
 
@@ -258,12 +274,45 @@ public class PlayerMovement : MonoEx, IRaycastable
 		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
 		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
 
+
+
+		if (transform.position.y < 2 && currentState == PlayerState.Flying) {
+			SetState (PlayerState.Danger);
+		}
+		if (currentState == PlayerState.Danger && transform.position.y > 2) {
+			SetState (PlayerState.Flying);
+		}
+		if (transform.position.y < 0 && GameManager.instance.currentState != GameState.Collision) {
+			GameManager.instance.SetGameState (GameState.Collision);
+		}
+		if (transform.position.y > maxAltitude) {
+			Vector3 temp = transform.position;
+			temp.y = maxAltitude;
+			transform.position = temp;
+		}
+
+	}
+
+	public void SetState (PlayerState state)
+	{
+		
+		if (state != currentState) {
+			print ("setting player state to " + state);
+			if (OnPlayerStateChange != null) {
+				OnPlayerStateChange (state);
+			}
+			currentState = state;
+		} else {
+			Debug.Log ("ALREADY IN THIS PlayerState  " + state);
+
+		}
+
 	}
 
 	void FixedUpdate ()
 	{
-
-		rb.velocity = (transform.forward * ((velocityForce + velocityAdd) * boostFactor) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
+		if (GameManager.instance.currentState == GameState.StartGame || GameManager.instance.currentState == GameState.Game)
+			rb.velocity = (transform.forward * ((velocityForce + velocityAdd) * boostFactor) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
 	}
 
 	float GetPlaneDotProduct ()
@@ -276,17 +325,14 @@ public class PlayerMovement : MonoEx, IRaycastable
 //		canInput = false;
 	}
 
-	public override void Enable ()
+
+
+
+	void OnCollisionEnter (Collision col)
 	{
-		base.Enable ();
-
+		if (currentState != PlayerState.Crashed && GameManager.instance.currentState != GameState.Collision)
+			GameManager.instance.SetGameState (GameState.Collision);
 	}
-
-	public override void Disable ()
-	{
-		base.Disable ();
-	}
-
 		
 
 

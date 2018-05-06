@@ -49,7 +49,10 @@ public class GameManager : Singleton<GameManager>
 
 
 
-
+	public CampBindAxis fogTransform;
+	public GameObject endGameUI;
+	public GameObject inGameUI;
+	public GameObject introUI;
 
 
 
@@ -67,7 +70,7 @@ public class GameManager : Singleton<GameManager>
 
 	public delegate void OnGameEvent ();
 
-	public static event OnGameEvent OnStateUpdateHandler, OnSwipeLeft, OnSwipeRight;
+	public static event OnGameEvent OnStateUpdateHandler;
 
 	public delegate void OnNewStartPosition (Vector3 pos, Quaternion rot);
 
@@ -129,25 +132,12 @@ public class GameManager : Singleton<GameManager>
 			}
 			currentState = gameState;
 		} else {
-			Debug.Log ("ALREADY IN THIS STATE");
+			Debug.Log ("ALREADY IN THIS STATE  " + gameState);
 
 		}
 
 	}
 
-	public static void SwipeRight ()
-	{
-		if (OnSwipeRight != null) {
-			OnSwipeRight ();
-		}
-	}
-
-	public static void SwipeLeft ()
-	{
-		if (OnSwipeLeft != null) {
-			OnSwipeLeft ();
-		}
-	}
 
 	#endregion
 
@@ -177,20 +167,24 @@ public class GameManager : Singleton<GameManager>
 		//				inTransition = true;
 		OnStateUpdateHandler += () => {
 			if (Input.GetKeyDown (KeyCode.R))
-				Application.LoadLevel (Application.loadedLevel);
+				SetGameState (GameState.Collision);
 			if (Input.GetKeyDown (KeyCode.T))
 				SetGameState (nextState);
 		};
+		StopAllCoroutines ();
 		switch (state) {
+
 		case GameState.Intro:
 			D.log ("intro state");
-
+			fogTransform.enabled = true;
 			nextState = GameState.MainMenu;
-
-			StartCoroutine (Auto.Wait (0.1f, () => {
-
-				SetGameState (nextState);
-			}));
+			FadeAndToggle (introUI, true, 1, 1, 0);
+			FadeAndToggle (inGameUI, false, 0, 0.01f, 0);
+			FadeAndToggle (endGameUI, false, 0, 0.01f, 0);
+//			StartCoroutine (Auto.Wait (0.1f, () => {
+//
+//				SetGameState (nextState);
+//			}));
 			break;
 		case GameState.MainMenu:
 
@@ -198,13 +192,14 @@ public class GameManager : Singleton<GameManager>
 			nextState = GameState.StartGame;
 			break;
 		case GameState.StartGame:
-
+			FadeAndToggle (introUI, false, 0, 0.25f, 0);
+			FadeAndToggle (inGameUI, true, 1, 0.5f, 0.25f);
+			FadeAndToggle (endGameUI, false, 0, 0.01f, 0);
+			fogTransform.enabled = true;
 			nextState = GameState.Game;
 			break;
 		case GameState.Game:
-			OnStateUpdateHandler += () => {
-				
-			};
+			fogTransform.enabled = true;
 			nextState = GameState.Summary;
 			break;
 		case GameState.Summary:
@@ -216,16 +211,43 @@ public class GameManager : Singleton<GameManager>
 			nextState = GameState.StartGame;
 			break;
 		case GameState.Collision:
-
-
+			FadeAndToggle (introUI, false, 0, 0.01f, 0);
+			FadeAndToggle (inGameUI, false, 0, 1f, 0);
+			FadeAndToggle (endGameUI, true, 1, 1f, 1.2f);
+			fogTransform.enabled = false;
 
 
 			nextState = GameState.StartGame;
+		
 
 			break;
 		}
 		Debug.Log ("switching state to " + state);
 
+	}
+
+
+
+	void FadeAndToggle (GameObject gObj, bool active, float targetAlpha, float duration, float delay)
+	{
+		StartCoroutine (Auto.Wait (0.001f + delay, () => {
+		
+		
+			CanvasGroup cGroup = gObj.GetComponent<CanvasGroup> ();
+			if (active == true) {
+				if (targetAlpha == 1 && cGroup != null) {
+					cGroup.alpha = 0;
+				}
+				gObj.SetActive (true);
+			}
+			if (cGroup != null) {
+				StartCoroutine (cGroup.FadeAlpha (targetAlpha, duration, EaseType.SmoothStepInOut, () => {
+					gObj.SetActive (active);
+				}));
+			} else {
+				gObj.SetActive (active);
+			}
+		}));
 	}
 
 
