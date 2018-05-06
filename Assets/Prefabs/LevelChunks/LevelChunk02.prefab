@@ -407,7 +407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1311186772129800
 GameObject:
   m_ObjectHideFlags: 1
@@ -5549,7 +5549,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114077599857208976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5614,7 +5614,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114121994061493378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5630,7 +5630,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114140429099061116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5646,7 +5646,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114171098564863846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5838,7 +5838,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114268684746639378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5896,7 +5896,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114323720182380236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5912,7 +5912,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114327341886818442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5960,7 +5960,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114366484643237356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6067,7 +6067,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114416107175062264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6083,7 +6083,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114419570540195836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6144,7 +6144,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114434028150782922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6192,7 +6192,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114501602302876004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6302,7 +6302,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114636788106865852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6347,7 +6347,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114693813800484854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6843,7 +6843,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 10
+  fuel: 1
 --- !u!114 &114973779399264992
 MonoBehaviour:
   m_ObjectHideFlags: 1

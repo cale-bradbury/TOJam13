@@ -13,6 +13,7 @@ public class BuildingBuilder : MonoBehaviour
 
 	public float chunkSize = 50;
 	public int numChunks = 6;
+	int numSpawned = 0;
 
 	float t = 0;
 	List<GameObject> buildings;
@@ -38,6 +39,7 @@ public class BuildingBuilder : MonoBehaviour
 			enabled = true;
 			break;
 		case GameState.Collision:
+			EndGame ();
 			enabled = false;
 			break;
 		case GameState.End:
@@ -57,6 +59,7 @@ public class BuildingBuilder : MonoBehaviour
 				GameObject g = Instantiate<GameObject> (prefabs [Random.Range (0, prefabs.Count)], new Vector3 (0, 0, chunkSize * buildings.Count), Quaternion.identity);
 				buildings.Add (g);
 			}
+			numSpawned = buildings.Count;
 		}
 	}
 	
@@ -68,8 +71,9 @@ public class BuildingBuilder : MonoBehaviour
 			if (buildings [0].transform.position.z < (player.position.z - 400)) {
 				Destroy (buildings [0]);
 				buildings.RemoveAt (0);
-				GameObject g = Instantiate<GameObject> (prefabs [Random.Range (0, prefabs.Count)], new Vector3 (0, 0, chunkSize * buildings.Count), Quaternion.identity);
+				GameObject g = Instantiate<GameObject> (prefabs [Random.Range (0, prefabs.Count)], new Vector3 (0, 0, chunkSize * (numSpawned + 1)), Quaternion.identity);
 				buildings.Add (g);
+				numSpawned++;
 			}
 		}
 	}
@@ -91,5 +95,6 @@ public class BuildingBuilder : MonoBehaviour
 		}
 		buildings.Clear ();
 		buildings = new List<GameObject> ();
+		numSpawned = 0;
 	}
 }
