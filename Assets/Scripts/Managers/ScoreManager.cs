@@ -14,16 +14,18 @@ public class ScoreManager : Singleton<ScoreManager>
 
 	public void CalculateScore ()
 	{
-		score = Mathf.RoundToInt (distanceInput.GetFloat ()) + scoreBonuses;
+		if (GameManager.instance.currentState == GameState.StartGame)
+			score = Mathf.RoundToInt (distanceInput.GetFloat ()) + scoreBonuses;
 	}
 
 	public void DisplayScore ()
 	{
-		string s = "Score: " + score.ToString ();
+		string inGame = score.ToString ();
+		string endGame = "S C O R E : " + score.ToString ();
 		if (inGameScoreLabel.gameObject.activeInHierarchy)
-			inGameScoreLabel.text = s;
+			inGameScoreLabel.text = inGame;
 		if (endGameScoreLabel.gameObject.activeInHierarchy)
-			endGameScoreLabel.text = s;
+			endGameScoreLabel.text = endGame;
 	}
 
 	void Awake ()

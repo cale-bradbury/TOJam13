@@ -9,6 +9,7 @@ public class CampBindAxis : MonoBehaviour {
 	public bool bindZ = true;
 	public bool smoothing = false;
 	public float smooth = .5f;
+    public Vector3 offset;
 
 	// Use this for initialization
 	void Start () {
@@ -16,16 +17,18 @@ public class CampBindAxis : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 		Vector3 v = transform.position;
-		if(smoothing){
-			if(bindX)v.x = Mathf.Lerp(v.x, bind.position.x, smooth*Time.deltaTime);
-			if(bindY)v.y = Mathf.Lerp(v.y, bind.position.y, smooth*Time.deltaTime);
-			if(bindZ)v.z = Mathf.Lerp(v.z, bind.position.z, smooth*Time.deltaTime);
+        float t = 1;// Time.deltaTime;// / Application.targetFrameRate;
+
+        if (smoothing){
+			if(bindX)v.x = Mathf.Lerp(v.x, bind.position.x+offset.x, smooth*t);
+			if(bindY)v.y = Mathf.Lerp(v.y, bind.position.y + offset.y, smooth*t);
+			if(bindZ)v.z = Mathf.Lerp(v.z, bind.position.z + offset.z, smooth*t);
 		}else{
-			if(bindX)v.x = bind.position.x;
-			if(bindY)v.y = bind.position.y;
-			if(bindZ)v.z = bind.position.z;
+			if(bindX)v.x = bind.position.x + offset.x;
+			if(bindY)v.y = bind.position.y + offset.y;
+			if(bindZ)v.z = bind.position.z + offset.z;
 		}
 		transform.position = v;
 	}

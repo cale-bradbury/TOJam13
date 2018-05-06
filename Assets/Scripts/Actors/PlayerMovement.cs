@@ -51,7 +51,10 @@ public class PlayerMovement : MonoEx
 	public Transform boostTrail;
 	public FlickerElement pullUp;
 	public FlickerElement danger;
-	public GameObject renderMesh;
+    public AudioHelm.HelmController warningSound;
+    public int warningSoundKeyPullup;
+    public int warningSoundKeyDanger;
+    public GameObject renderMesh;
 	public GameObject deathMesh;
 	public Light boostLight;
 
@@ -82,6 +85,9 @@ public class PlayerMovement : MonoEx
 	public float velocityPercent;
 
 	[HideInInspector]
+	public float pitchPercent;
+
+	[HideInInspector]
 	public float distance = 0;
 
 
@@ -95,6 +101,8 @@ public class PlayerMovement : MonoEx
 
 	public float velocityForce = 50;
 	public float lateralVelocityForce = 30;
+
+	//	float boostVelocity
 
 	public float maxBoostFactor = 3;
 	public float boostIncrease = 1;
@@ -289,7 +297,7 @@ public class PlayerMovement : MonoEx
 		boostPercent = (boostFactor - 1) / (maxBoostFactor - 1);
 		fuelPercent = currentFuel / MaxFuel;
 		velocityPercent = currentVelocity / maxVelocity;
-
+		pitchPercent = (currentPitch + 1) / 2;
 
 
 		boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
@@ -299,19 +307,39 @@ public class PlayerMovement : MonoEx
 
 		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
 		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
+        
+        if (transform.position.y < 20) {
+            if (!pullUp.gameObject.activeSelf)
+            {
+                warningSound.NoteOn(warningSoundKeyPullup);
+                pullUp.gameObject.SetActive(true);
+            }
+		}
+		if (transform.position.y > 20)
+        {
+            if (pullUp.gameObject.activeSelf)
+            {
+                warningSound.NoteOff(warningSoundKeyPullup);
+                pullUp.gameObject.SetActive(false);
+            }
+            
+		}
 
-		if (transform.position.y < 20) {
-			pullUp.gameObject.SetActive (true);
+		if (transform.position.y < 8)
+        {
+            if (!danger.gameObject.activeSelf)
+            {
+                warningSound.NoteOn(warningSoundKeyDanger);
+                danger.gameObject.SetActive(true);
+            }
 		}
-		if (transform.position.y > 20) {
-			pullUp.gameObject.SetActive (false);
-		}
-
-		if (transform.position.y < 8) {
-			danger.gameObject.SetActive (true);
-		}
-		if (transform.position.y > 8) {
-			danger.gameObject.SetActive (false);
+		if (transform.position.y > 8)
+        {
+            if (danger.gameObject.activeSelf)
+            {
+                warningSound.NoteOff(warningSoundKeyDanger);
+                danger.gameObject.SetActive(false);
+            }
 		}
 
 		if (transform.position.y < 2 && currentState == PlayerState.Flying) {
@@ -328,7 +356,6 @@ public class PlayerMovement : MonoEx
 			temp.y = maxAltitude;
 			transform.position = temp;
 		}
-
 	}
 
 	public void SetState (PlayerState state)
