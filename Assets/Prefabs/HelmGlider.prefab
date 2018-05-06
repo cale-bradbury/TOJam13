@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114591413100740492}
   - component: {fileID: 114931608423016544}
   - component: {fileID: 114968035683271324}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HelmGlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,4 +514,4 @@ MonoBehaviour:
   controller: {fileID: 114309428435384818}
   parameter: 13
   percent: 1
-  debug: 1
+  debug: 0

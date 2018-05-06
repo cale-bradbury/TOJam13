@@ -3,6 +3,10 @@
 public class CameraFollow : MonoBehaviour
 {
 
+    public Transform targetPosition;
+    public Transform targetLookAt;
+
+
 	public Transform target;
 	public Transform targetRotation;
 
@@ -15,6 +19,13 @@ public class CameraFollow : MonoBehaviour
 
 	void LateUpdate ()
 	{
+
+        transform.position = targetPosition.position;
+        Quaternion rot = transform.rotation;
+        transform.LookAt(targetLookAt);
+        transform.rotation = Quaternion.Lerp(rot, transform.rotation, Time.deltaTime*4);
+        return;
+
 //		Vector3 desiredPosition = target.position + offset;
 //
 //		Vector3 smoothedPosition = Vector3.Lerp (transform.position, desiredPosition, smoothSpeed * Time.deltaTime);

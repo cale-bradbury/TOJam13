@@ -39,18 +39,27 @@ public class PlayerMovement : MonoEx, IRaycastable
 		Takeoff = 4,
 		Null = 5,
 	}
-	
-	
-	//roll
-	//pitch
-	//current velocity
-	//
-	//boost
-	//
+
+
+    //roll
+    //pitch
+    //current velocity
+    //
+    //boost
+    //
+
+    public Transform CameraTargetLook;
+    public Vector3 CameraTargetLookDefault;
+    public Vector3 CameraTargetLookDown;
+    public Vector3 CameraTargetLookUp;
+    public Vector3 CameraTargetLookLeft;
+    public Vector3 CameraTargetLookRight;
+    public float CameraTargetLookSmoothing = .2f;
 
 
 
-	bool isPlayable = true;
+
+    bool isPlayable = true;
 
 	public Transform planeRoot;
 	public Transform boostTrail;
@@ -191,7 +200,7 @@ public class PlayerMovement : MonoEx, IRaycastable
 			currentLift = 0;
 		}
 
-
+        Vector3 target = CameraTargetLookDefault;
 
 		if (canInput) {
 			
@@ -200,10 +209,29 @@ public class PlayerMovement : MonoEx, IRaycastable
 
 			if (vInput != 0) {
 				transform.Rotate (transform.right, Time.deltaTime * vInput * pitchInputSpeed, Space.Self);
-			}
-		}
+                if (vInput > 0)
+                {
+                    target = Vector3.Lerp(target, CameraTargetLookUp, vInput);
+                }
+                else
+                {
+                    target = Vector3.Lerp(target, CameraTargetLookDown, -vInput);
+                }
+            }
+            Vector3 horizontalAdtionalTarget = Vector3.zero;
+            if (hInput > 0)
+            {
+                horizontalAdtionalTarget = Vector3.Lerp(horizontalAdtionalTarget, CameraTargetLookRight, hInput);
+            }
+            else
+            {
+                horizontalAdtionalTarget = Vector3.Lerp(horizontalAdtionalTarget, CameraTargetLookLeft, -hInput);
+            }
+            target += horizontalAdtionalTarget;
+        }
+        CameraTargetLook.localPosition = Vector3.Lerp(CameraTargetLook.localPosition, target, CameraTargetLookSmoothing);
 
-		float t = currentVelocity / 90;
+        float t = currentVelocity / 90;
 		boostTrail.localScale = Vector3.Lerp (trailMin, trailMax, t);
 
 		//BOOST
