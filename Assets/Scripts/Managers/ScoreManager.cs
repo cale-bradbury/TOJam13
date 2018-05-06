@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : Singleton<ScoreManager>
 {
+    public static ScoreManager instance;
 	public CampReflectFloat distanceInput;
 	public int score;
 	public int scoreBonuses;
@@ -28,9 +29,15 @@ public class ScoreManager : Singleton<ScoreManager>
 			endGameScoreLabel.text = endGame;
 	}
 
+    public void AddBonus(int amount)
+    {
+        scoreBonuses += amount;
+    }
+
 	void Awake ()
-	{
-		GameManager.OnStateChange += HandleStateChange;
+    {
+        instance = this;
+        GameManager.OnStateChange += HandleStateChange;
 	}
 
 	void OnDestroy ()

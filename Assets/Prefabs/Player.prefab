@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4779847003058218}
   - component: {fileID: 33297862149664162}
   - component: {fileID: 23961969864751912}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wires
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4038336280946044}
   - component: {fileID: 33317064736679412}
   - component: {fileID: 23592762016617506}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MainColour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4498095668407576}
   - component: {fileID: 33199330354959506}
   - component: {fileID: 23919092874596476}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WingColour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4651533112289390}
   - component: {fileID: 65181110465353532}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4234967145926722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CameraTargetPosition
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4859964998895172}
   - component: {fileID: 33340695764622196}
   - component: {fileID: 23937056266672624}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 65046980165397466}
   - component: {fileID: 54368351365011170}
   - component: {fileID: 114804671836185424}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4713654890766080}
   - component: {fileID: 108288687018669756}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BoosterLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,30 +153,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4876739324993110}
   - component: {fileID: 65067301411332726}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1437160097816672
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4536376144184630}
-  - component: {fileID: 82908225998457434}
-  - component: {fileID: 114134506563449310}
-  - component: {fileID: 114061134054259534}
-  - component: {fileID: 114314708304275786}
-  - component: {fileID: 114415819891547594}
-  - component: {fileID: 114012431731510456}
-  - component: {fileID: 114429688732355600}
-  m_Layer: 0
-  m_Name: SoundWind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,8 +171,29 @@ GameObject:
   - component: {fileID: 222172375455566122}
   - component: {fileID: 114378419735460060}
   - component: {fileID: 225797343027952394}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1477420636541072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4041096035872672}
+  - component: {fileID: 82973748880441528}
+  - component: {fileID: 114251594922457612}
+  - component: {fileID: 114015567938469642}
+  - component: {fileID: 114055561854521170}
+  - component: {fileID: 114509862464279172}
+  - component: {fileID: 114338021011826468}
+  m_Layer: 9
+  m_Name: SoundAlarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,7 +231,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4269523247182438}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Thrust_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4195062824135910}
   - component: {fileID: 96213153757456892}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WingTrails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +267,7 @@ GameObject:
   - component: {fileID: 114476980220776352}
   - component: {fileID: 114880334705355848}
   - component: {fileID: 225202657723099112}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4281732017479940}
   - component: {fileID: 96065187822697712}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WingTrails (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +300,7 @@ GameObject:
   - component: {fileID: 4876514493259876}
   - component: {fileID: 33090499239568258}
   - component: {fileID: 23525343496354552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +315,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4640851475080996}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Glider_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +332,7 @@ GameObject:
   - component: {fileID: 4397872648515248}
   - component: {fileID: 33389178343219384}
   - component: {fileID: 23525393504293244}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pipes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +349,7 @@ GameObject:
   - component: {fileID: 4035658996883444}
   - component: {fileID: 33603977414999652}
   - component: {fileID: 23482091805722614}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Details
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +364,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4829271915093790}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CameraTargetLookAt
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -382,7 +381,7 @@ GameObject:
   - component: {fileID: 4924408773127672}
   - component: {fileID: 33035848880791140}
   - component: {fileID: 23981518905026468}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Thrust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +398,7 @@ GameObject:
   - component: {fileID: 4444274903839534}
   - component: {fileID: 33823065490361394}
   - component: {fileID: 23370054292205116}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,6 +430,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4640851475080996}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4041096035872672
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477420636541072}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4895005460795548}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4098123997089386
 Transform:
@@ -536,19 +548,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4640851475080996}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4536376144184630
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437160097816672}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4895005460795548}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4640851475080996
 Transform:
@@ -682,7 +681,7 @@ Transform:
   - {fileID: 4234967145926722}
   - {fileID: 4829271915093790}
   - {fileID: 4098123997089386}
-  - {fileID: 4536376144184630}
+  - {fileID: 4041096035872672}
   - {fileID: 224600110867016356}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -709,7 +708,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -725,7 +723,6 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -743,7 +740,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -759,7 +755,6 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -777,7 +772,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -793,7 +787,6 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -811,7 +804,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -827,7 +819,6 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -845,7 +836,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -861,7 +851,6 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -879,7 +868,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -895,7 +883,6 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -913,7 +900,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -929,7 +915,6 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -947,7 +932,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -963,7 +947,6 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -981,7 +964,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -997,7 +979,6 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -1201,15 +1182,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82908225998457434
+--- !u!82 &82973748880441528
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437160097816672}
+  m_GameObject: {fileID: 1477420636541072}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243784916383108906, guid: aed68d1729c0bbd4e9dabd05001a6e33,
+  OutputAudioMixerGroup: {fileID: 243592072774301118, guid: aed68d1729c0bbd4e9dabd05001a6e33,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -1292,7 +1273,6 @@ TrailRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -1308,7 +1288,6 @@ TrailRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -1385,7 +1364,6 @@ TrailRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -1401,7 +1379,6 @@ TrailRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -1500,36 +1477,36 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114012431731510456
+--- !u!114 &114015567938469642
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437160097816672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611abe8f0e04de043aab1ca350c843ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 114061134054259534}
-  note: 64
-  velocity: 1
---- !u!114 &114061134054259534
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437160097816672}
+  m_GameObject: {fileID: 1477420636541072}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e4430ff3452e4a85ac2530e457beb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  channel: 1
+  channel: 2
   synthParamValue0: 0
   synthParamValue1: 0
   synthParamValue2: 0
@@ -1547,6 +1524,176 @@ MonoBehaviour:
   synthParamValue14: 0
   synthParamValue15: 0
   synthParameters: []
+--- !u!114 &114055561854521170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477420636541072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f3b6e6a951d4582bfd784c7c9b4810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patchObject: {fileID: 102900000, guid: 40aab3ce4585a724ea2de0b1624a88b5, type: 3}
+  patchData:
+    license: Patch (c) by Cris Owl Alvarez.  This patch is licensed under a Creative
+      Commons Attribution 4.0 International License.  You should have received a copy
+      of the license along with this work.  If not, see <http://creativecommons.org/licenses/by/4.0/>.
+    synth_version: 0.9.0
+    patch_name: alarmB
+    folder_name: Sounds
+    author: Cris Owl Alvarez
+    settings:
+      amp_attack: 0.5294118
+      amp_decay: 1.5
+      amp_release: 1.2352941
+      amp_sustain: 1
+      arp_frequency: 2
+      arp_gate: 0.20000002
+      arp_octaves: 2
+      arp_on: 0
+      arp_pattern: 0
+      arp_sync: 1
+      arp_tempo: 9
+      beats_per_minute: 2
+      cross_modulation: 0.134
+      cutoff: 97.882355
+      delay_dry_wet: 0.5
+      delay_feedback: 0.39999998
+      delay_frequency: 2.0000002
+      delay_on: 0
+      delay_sync: 1
+      delay_tempo: 9
+      distortion_drive: 1.2000039
+      distortion_mix: 1
+      distortion_on: 1
+      distortion_type: 0
+      fil_attack: 0.88235295
+      fil_decay: 0
+      fil_env_depth: 26.624
+      fil_release: 1
+      fil_sustain: 0.4117647
+      filter_blend: 0
+      filter_drive: -12
+      filter_on: 1
+      filter_saturation: 0
+      filter_shelf: 0
+      filter_style: 0
+      filter_type: 0
+      formant_on: 1
+      formant_x: 0.7708333
+      formant_y: 0.27522936
+      keytrack: 0
+      legato: 1
+      mod_attack: 0
+      mod_decay: 1.5
+      mod_release: 1.5
+      mod_sustain: 0.5
+      mono_lfo_1_amplitude: -1
+      mono_lfo_1_frequency: 1.0000002
+      mono_lfo_1_retrigger: 1
+      mono_lfo_1_sync: 1
+      mono_lfo_1_tempo: 6
+      mono_lfo_1_waveform: 3
+      mono_lfo_2_amplitude: -1
+      mono_lfo_2_frequency: 1.0000002
+      mono_lfo_2_retrigger: 1
+      mono_lfo_2_sync: 1
+      mono_lfo_2_tempo: 6
+      mono_lfo_2_waveform: 2
+      noise_volume: 0
+      num_steps: 8
+      osc_1_transpose: 12
+      osc_1_tune: 0.032000065
+      osc_1_unison_detune: 0
+      osc_1_unison_voices: 1
+      osc_1_volume: 0.41108888
+      osc_1_waveform: 0
+      osc_2_transpose: -12
+      osc_2_tune: -0.234375
+      osc_2_unison_detune: 5.600002
+      osc_2_unison_voices: 15
+      osc_2_volume: 0.4361784
+      osc_2_waveform: 3
+      osc_feedback_amount: 0.8000001
+      osc_feedback_transpose: 12.999999
+      osc_feedback_tune: 0
+      osc_mix: 0
+      pitch_bend_range: 4
+      poly_lfo_amplitude: 1
+      poly_lfo_frequency: 1.0000002
+      poly_lfo_sync: 1
+      poly_lfo_tempo: 7
+      poly_lfo_waveform: 0
+      polyphony: 1
+      portamento: -3.6239998
+      portamento_type: 2
+      resonance: 0.5810811
+      reverb_damping: 0.5
+      reverb_dry_wet: 0.31482622
+      reverb_feedback: 0.8136
+      reverb_on: 1
+      step_frequency: 1.9999999
+      step_seq_00: 0
+      step_seq_01: 0
+      step_seq_02: 0
+      step_seq_03: 0
+      step_seq_04: 0
+      step_seq_05: 0
+      step_seq_06: 0
+      step_seq_07: 0
+      step_seq_08: 0
+      step_seq_09: 0
+      step_seq_10: 0
+      step_seq_11: 0
+      step_seq_12: 0
+      step_seq_13: 0
+      step_seq_14: 0
+      step_seq_15: 0
+      step_seq_16: 0
+      step_seq_17: 0
+      step_seq_18: 0
+      step_seq_19: 0
+      step_seq_20: 0
+      step_seq_21: 0
+      step_seq_22: 0
+      step_seq_23: 0
+      step_seq_24: 0
+      step_seq_25: 0
+      step_seq_26: 0
+      step_seq_27: 0
+      step_seq_28: 0
+      step_seq_29: 0
+      step_seq_30: 0
+      step_seq_31: 0
+      step_sequencer_retrigger: 0
+      step_sequencer_sync: 1
+      step_sequencer_tempo: 7
+      step_smoothing: 0
+      stutter_frequency: 5.5320005
+      stutter_on: 0
+      stutter_resample_frequency: 4
+      stutter_resample_sync: 1
+      stutter_resample_tempo: 6
+      stutter_softness: 1
+      stutter_sync: 1
+      stutter_tempo: 8
+      sub_octave: 1
+      sub_shuffle: 1
+      sub_volume: 0.70710677
+      sub_waveform: 0
+      unison_1_harmonize: 0
+      unison_2_harmonize: 0
+      velocity_track: 0
+      volume: 0.9183766
+      modulations:
+      - source: mono_lfo_2
+        destination: volume
+        amount: -0.33642364
+      - source: mono_lfo_1
+        destination: cutoff
+        amount: -22.801239
 --- !u!114 &114115371753313458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1582,19 +1729,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114134506563449310
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437160097816672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 981c2862dc2a4474b9d748a52426fab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  synthesizerMixerGroup: {fileID: 0}
-  spatializerMixerGroup: {fileID: 0}
 --- !u!114 &114149156227466188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1614,6 +1748,19 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1522850554112008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981c2862dc2a4474b9d748a52426fab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  synthesizerMixerGroup: {fileID: 0}
+  spatializerMixerGroup: {fileID: 0}
+--- !u!114 &114251594922457612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477420636541072}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 981c2862dc2a4474b9d748a52426fab6, type: 3}
@@ -1841,173 +1988,56 @@ MonoBehaviour:
   parameter: 13
   percent: 1
   debug: 0
---- !u!114 &114314708304275786
+--- !u!114 &114338021011826468
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437160097816672}
+  m_GameObject: {fileID: 1477420636541072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65f3b6e6a951d4582bfd784c7c9b4810, type: 3}
+  m_Script: {fileID: 11500000, guid: 29a8c266df1c062429e243a7058366c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patchObject: {fileID: 102900000, guid: 9125ca50db568bf41b6957588452d87c, type: 3}
-  patchData:
-    license: Patch (c) by SF.  This patch is licensed under a Creative Commons Attribution
-      4.0 International License.  You should have received a copy of the license along
-      with this work.  If not, see <http://creativecommons.org/licenses/by/4.0/>.
-    synth_version: 0.9.0
-    patch_name: windB
-    folder_name: Sounds
-    author: SF
-    settings:
-      amp_attack: 1.3529412
-      amp_decay: 1.5
-      amp_release: 1.9524447
-      amp_sustain: 1
-      arp_frequency: 2
-      arp_gate: 0.5
-      arp_octaves: 1
-      arp_on: 0
-      arp_pattern: 0
-      arp_sync: 1
-      arp_tempo: 9
-      beats_per_minute: 2
-      cross_modulation: 0
-      cutoff: 67.10084
-      delay_dry_wet: 0.5
-      delay_feedback: 0.4
-      delay_frequency: 2
-      delay_on: 0
-      delay_sync: 1
-      delay_tempo: 9
-      distortion_drive: 0.72
-      distortion_mix: 1
-      distortion_on: 1
-      distortion_type: 3
-      fil_attack: 0
-      fil_decay: 1.5
-      fil_env_depth: 2.5501556
-      fil_release: 1.5
-      fil_sustain: 0.566215
-      filter_blend: 0
-      filter_drive: -9.702
-      filter_on: 1
-      filter_saturation: 0
-      filter_shelf: 0
-      filter_style: 0
-      filter_type: 0
-      formant_on: 0
-      formant_x: 0.5
-      formant_y: 0.5
-      keytrack: 0.032814503
-      legato: 0
-      mod_attack: 0
-      mod_decay: 1.5
-      mod_release: 1.5
-      mod_sustain: 0.5
-      mono_lfo_1_amplitude: 1
-      mono_lfo_1_frequency: 1
-      mono_lfo_1_retrigger: 0
-      mono_lfo_1_sync: 1
-      mono_lfo_1_tempo: 6
-      mono_lfo_1_waveform: 0
-      mono_lfo_2_amplitude: 1
-      mono_lfo_2_frequency: -2.4584138
-      mono_lfo_2_retrigger: 0
-      mono_lfo_2_sync: 0
-      mono_lfo_2_tempo: 9
-      mono_lfo_2_waveform: 0
-      noise_volume: 0.80604285
-      num_steps: 8
-      osc_1_transpose: 0
-      osc_1_tune: 0
-      osc_1_unison_detune: 10
-      osc_1_unison_voices: 1
-      osc_1_volume: 0
-      osc_1_waveform: 0
-      osc_2_transpose: 0
-      osc_2_tune: 0
-      osc_2_unison_detune: 10
-      osc_2_unison_voices: 1
-      osc_2_volume: 0
-      osc_2_waveform: 0
-      osc_feedback_amount: 0
-      osc_feedback_transpose: 0
-      osc_feedback_tune: 0
-      osc_mix: 0
-      pitch_bend_range: 2
-      poly_lfo_amplitude: 1
-      poly_lfo_frequency: 1
-      poly_lfo_sync: 1
-      poly_lfo_tempo: 7
-      poly_lfo_waveform: 0
-      polyphony: 1
-      portamento: -9
-      portamento_type: 0
-      resonance: 0.6644937
-      reverb_damping: 0.5
-      reverb_dry_wet: 0.5
-      reverb_feedback: 0.9
-      reverb_on: 1
-      step_frequency: 2
-      step_seq_00: 0
-      step_seq_01: 0
-      step_seq_02: 0
-      step_seq_03: 0
-      step_seq_04: 0
-      step_seq_05: 0
-      step_seq_06: 0
-      step_seq_07: 0
-      step_seq_08: 0
-      step_seq_09: 0
-      step_seq_10: 0
-      step_seq_11: 0
-      step_seq_12: 0
-      step_seq_13: 0
-      step_seq_14: 0
-      step_seq_15: 0
-      step_seq_16: 0
-      step_seq_17: 0
-      step_seq_18: 0
-      step_seq_19: 0
-      step_seq_20: 0
-      step_seq_21: 0
-      step_seq_22: 0
-      step_seq_23: 0
-      step_seq_24: 0
-      step_seq_25: 0
-      step_seq_26: 0
-      step_seq_27: 0
-      step_seq_28: 0
-      step_seq_29: 0
-      step_seq_30: 0
-      step_seq_31: 0
-      step_sequencer_retrigger: 0
-      step_sequencer_sync: 1
-      step_sequencer_tempo: 7
-      step_smoothing: 0
-      stutter_frequency: 3
-      stutter_on: 0
-      stutter_resample_frequency: 1
-      stutter_resample_sync: 1
-      stutter_resample_tempo: 6
-      stutter_softness: 0.2
-      stutter_sync: 1
-      stutter_tempo: 8
-      sub_octave: 0
-      sub_shuffle: 0
-      sub_volume: 0
-      sub_waveform: 2
-      unison_1_harmonize: 0
-      unison_2_harmonize: 0
-      velocity_track: 0
-      volume: 1.0297409
-      modulations:
-      - source: mono_lfo_2
-        destination: noise_volume
-        amount: 0.15938494
+  input:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 4895005460795548}
+    varName: position-y
+    componentIndex: 0
+    isMat: 0
+    componentName: UnityEngine.Transform, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    go: {fileID: 1342239284544172}
+    isVector: 0
+    index: 0
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0.05
+      outSlope: 0.05
+      tangentMode: 34
+    - serializedVersion: 2
+      time: 20
+      value: 1
+      inSlope: 0.05
+      outSlope: 0.05
+      tangentMode: 34
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  controller: {fileID: 114015567938469642}
+  parameter: 39
+  percent: 1
+  debug: 0
 --- !u!114 &114378419735460060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2035,56 +2065,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114415819891547594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437160097816672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a662890805e6bdd4aa1724dd2dd447c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 114061134054259534}
-  patch: {fileID: 114314708304275786}
---- !u!114 &114429688732355600
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1437160097816672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f5df577159a494d8d7e00d3ca051c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 114061134054259534}
-  param: 14
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  distanceToValue:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 1
-      value: 0.6
-      inSlope: -0.022222225
-      outSlope: -0.022222225
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 10
-      value: 0.4
-      inSlope: -0.022222225
-      outSlope: -0.022222225
-      tangentMode: 34
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  source: {fileID: 82908225998457434}
-  panAmount: 0.2
-  smoothing: 0.5
 --- !u!114 &114476980220776352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2101,6 +2081,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114509862464279172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477420636541072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a662890805e6bdd4aa1724dd2dd447c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 114015567938469642}
+  patch: {fileID: 114055561854521170}
 --- !u!114 &114597687721473054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2200,6 +2193,11 @@ MonoBehaviour:
   boostTrail: {fileID: 4269523247182438}
   pullUp: {fileID: 0}
   danger: {fileID: 0}
+  warningSound: {fileID: 114015567938469642}
+  warningSoundKeyPullup: 52
+  warningSoundKeyDanger: 64
+  renderMesh: {fileID: 1800360573245522}
+  deathMesh: {fileID: 1581285062053992, guid: 02fdef1e534524eee929fb7d9a6fe79c, type: 2}
   boostLight: {fileID: 108288687018669756}
   currentPitch: 0
   currentVelocity: 0
@@ -2211,6 +2209,8 @@ MonoBehaviour:
   fuelPercent: 0
   altitudePercent: 0
   velocityPercent: 0
+  pitchPercent: 0
+  distance: 0
   pitchInputSpeed: 75.48
   smoothTime: 10
   liftFactor: 1.1
@@ -2297,6 +2297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookAt: {fileID: 0}
   smoothing: 0.59
+  additionalRotation: {x: 0, y: 0, z: 0}
 --- !u!222 &222172375455566122
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -2348,7 +2349,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1718803793879416}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25402832, y: -0.41497803, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.005588956, y: 0.0055889534, z: 0.0055889534}
   m_Children:
   - {fileID: 224522593356271868}

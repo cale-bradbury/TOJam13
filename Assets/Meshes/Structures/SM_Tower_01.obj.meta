@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: b902196b8a4c42d47a2e07d3cb6d94a8
-timeCreated: 1525580035
+guid: b182550d8c894e943b6a4ed15208e854
+timeCreated: 1525630434
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Tower
+    100002: Tower_01
     400000: //RootNode
-    400002: Tower
-    2300000: Tower
-    3300000: Tower
-    4300000: Tower
+    400002: Tower_01
+    2300000: Tower_01
+    3300000: Tower_01
+    4300000: Tower_01
   materials:
     importMaterials: 1
     materialName: 0
