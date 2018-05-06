@@ -21,6 +21,7 @@ public class CameraFollow : MonoEx
 
 	protected override void Awake ()
 	{
+        base.Awake();
 		GameManager.OnStateChange += HandleStateChange;
 	}
 
