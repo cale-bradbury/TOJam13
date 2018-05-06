@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 64547974689171344}
   - component: {fileID: 114678026722878056}
   - component: {fileID: 114556583931723570}
+  - component: {fileID: 114739002536937228}
   m_Layer: 0
   m_Name: Collider0
   m_TagString: Untagged
@@ -1390,6 +1391,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 114596342608837348}
   key: 48
+  layer:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &114739002536937228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1567802859759802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e4d695362f4e448912e5f7c5edbf2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: Fuel
   layer:
     serializedVersion: 2
     m_Bits: 512

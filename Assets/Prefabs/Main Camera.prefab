@@ -38,6 +38,9 @@ GameObject:
   - component: {fileID: 124988730113499304}
   - component: {fileID: 81468175879697030}
   - component: {fileID: 114967480256760206}
+  - component: {fileID: 114427275839201782}
+  - component: {fileID: 114084653682654212}
+  - component: {fileID: 114963087549631372}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -115,6 +118,97 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1788447873965366}
   m_Enabled: 1
+--- !u!114 &114084653682654212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788447873965366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536d61145841b7849b1d57294e6070cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 2148836cb933464498e671c616856367, type: 3}
+  count: 24
+  center: {x: 0.5, y: 0.5, z: 8, w: 6}
+  mul: 0.99
+  falloffStart: 0.05
+  falloffEnd: 0.3
+  alpha: 0
+  phase: 1
+--- !u!114 &114427275839201782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788447873965366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673974feb0e661d49a10b8234065fe21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 362c15c3a0cbecc4eb0462e707d7176d, type: 3}
+  dist: {x: 0, y: 1, z: 2}
+  center: {x: 0, y: 0}
+  intensity: -0.001
+--- !u!114 &114963087549631372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788447873965366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9649c2bb71f98bd49a7baede39882a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: Fuel
+  field:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 114084653682654212}
+    varName: alpha
+    componentIndex: 0
+    isMat: 0
+    componentName: 
+    go: {fileID: 0}
+    isVector: 0
+    index: 0
+  animation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.118469626
+      value: 0.93246186
+      inSlope: 1.1897087
+      outSlope: 1.1897087
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  min: 0
+  max: 1
+  time: 2
+  toggle: 0
+  firePostAnimation: 
 --- !u!114 &114967480256760206
 MonoBehaviour:
   m_ObjectHideFlags: 1
