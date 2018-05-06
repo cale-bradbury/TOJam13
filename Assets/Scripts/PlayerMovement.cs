@@ -53,6 +53,8 @@ public class PlayerMovement : MonoEx, IRaycastable
 	bool isPlayable = true;
 
 	public Transform planeRoot;
+	public Transform boostTrail;
+	public Light boostLight;
 
 
 	//THESE ARE THE PUBLIC VARS FOR CALE
@@ -85,7 +87,10 @@ public class PlayerMovement : MonoEx, IRaycastable
 	public float boostIncrease = 1;
 	public float boostDecrease = 3;
 
-
+	Vector3 origTrailScale;
+	public Vector3 trailMin, trailMax, trailMaxBoost;
+	public float minLight, maxLight;
+	public AnimationCurve trailCurve;
 
 	float dropVelocity = 20;
 	float velocityAdd = 0;
@@ -151,6 +156,8 @@ public class PlayerMovement : MonoEx, IRaycastable
 	{
 		base.Init ();
 		origVelocityForce = velocityForce;
+		origTrailScale = boostTrail.localScale;
+		boostTrail.localScale = trailMin;
 
 	}
 
@@ -184,14 +191,20 @@ public class PlayerMovement : MonoEx, IRaycastable
 		if (canInput) {
 			
 			float vInput = Input.GetAxis ("Vertical");
+			hInput = Input.GetAxis ("Horizontal");
 
 			if (vInput != 0) {
 				transform.Rotate (transform.right, Time.deltaTime * vInput * pitchInputSpeed, Space.Self);
 			}
 		}
 
+		float t = currentVelocity / 90;
+		boostTrail.localScale = Vector3.Lerp (trailMin, trailMax, t);
+		print (currentVelocity);
+
 		//BOOST
 		if (Input.GetKey (KeyCode.Space) && currentFuel > 0) {
+			boostTrail.localScale = Vector3.Lerp (trailMax, trailMaxBoost, (boostFactor - 1) / (maxBoostFactor - 1));
 			currentFuel -= fuelConsumptionFactor * Time.deltaTime;
 			if (velocityForce < origVelocityForce) {
 				velocityForce += 15 * Time.deltaTime;
@@ -203,12 +216,13 @@ public class PlayerMovement : MonoEx, IRaycastable
 		if (boostFactor > 1 && Input.GetKey (KeyCode.Space) == false) {
 			boostFactor -= boostDecrease * Time.deltaTime;
 		}
+		boostLight.intensity = Mathf.Lerp (minLight, maxLight, (boostFactor - 1) / (maxBoostFactor - 1));
+
 
 		//ROLL
-		hInput = Input.GetAxis ("Horizontal");
+
 		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
 		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
-
 
 	}
 
