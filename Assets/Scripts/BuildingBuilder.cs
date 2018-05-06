@@ -20,7 +20,7 @@ public class BuildingBuilder : MonoBehaviour
 	void Awake ()
 	{
 		GameManager.OnStateChange += HandleOnGameStateChange;
-
+		buildings = new List<GameObject> ();
 	}
 
 	void OnDestroy ()
@@ -47,14 +47,16 @@ public class BuildingBuilder : MonoBehaviour
 	}
 
 
-
 	// Use this for initialization
 	void OnEnable ()
 	{
-		buildings = new List<GameObject> ();
-		for (int i = 0; i < numChunks; i++) {
-			GameObject g = Instantiate<GameObject> (prefabs [Random.Range (0, prefabs.Count)], new Vector3 (0, 0, chunkSize * buildings.Count), Quaternion.identity);
-			buildings.Add (g);
+		if (buildings.Count == 0) {
+			
+			buildings = new List<GameObject> ();
+			for (int i = 0; i < numChunks; i++) {
+				GameObject g = Instantiate<GameObject> (prefabs [Random.Range (0, prefabs.Count)], new Vector3 (0, 0, chunkSize * buildings.Count), Quaternion.identity);
+				buildings.Add (g);
+			}
 		}
 	}
 	
@@ -63,7 +65,7 @@ public class BuildingBuilder : MonoBehaviour
 	{
 		if (buildings.Count > 0) {
 			
-			if (buildings [0].transform.position.z < player.position.z - 100) {
+			if (buildings [0].transform.position.z < (player.position.z - 400)) {
 				Destroy (buildings [0]);
 				buildings.RemoveAt (0);
 				GameObject g = Instantiate<GameObject> (prefabs [Random.Range (0, prefabs.Count)], new Vector3 (0, 0, chunkSize * buildings.Count), Quaternion.identity);
