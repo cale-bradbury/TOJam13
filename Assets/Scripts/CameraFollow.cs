@@ -41,7 +41,7 @@ public class CameraFollow : MonoBehaviour
 
 		// Let the camera look at the player                    
 //		SmoothLookAt (target.position, smoothLookSpeed);
-//		transform.LookAt (target.transform);
+		transform.LookAt (target.transform);
 
 	}
 

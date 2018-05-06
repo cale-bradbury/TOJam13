@@ -208,7 +208,7 @@ public class PlayerMovement : MonoEx, IRaycastable
 
 		//BOOST
 		if (Input.GetKey (KeyCode.Space) && currentFuel > 0) {
-			boostTrail.localScale = Vector3.Lerp (trailMax, trailMaxBoost, (boostFactor - 1) / (maxBoostFactor - 1));
+			boostTrail.localScale = Vector3.Lerp (trailMax, trailMaxBoost, boostPercent * 1.5f);
 			currentFuel -= fuelConsumptionFactor * Time.deltaTime;
 			if (velocityForce < origVelocityForce) {
 				velocityForce += 15 * Time.deltaTime;
