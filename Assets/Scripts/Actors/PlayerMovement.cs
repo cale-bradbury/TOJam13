@@ -290,9 +290,9 @@ public class PlayerMovement : MonoEx
 			if (boostFactor > 1 && Input.GetKey (KeyCode.Space) == false) {
 				boostFactor -= boostDecrease * Time.deltaTime;
 			}
-			boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
 		}
 
+		boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
 
 
 		altitudePercent = currentAltitude / maxAltitude;

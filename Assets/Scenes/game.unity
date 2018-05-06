@@ -112,6 +112,33 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!83 &84409979
+AudioClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: helm
+  m_LoadType: 0
+  m_Channels: 1
+  m_Frequency: 48000
+  m_BitsPerSample: 32
+  m_Length: 0
+  m_IsTrackerFormat: 0
+  m_Ambisonic: 0
+  m_SubsoundIndex: 0
+  m_PreloadAudioData: 1
+  m_LoadInBackground: 0
+  m_Legacy3D: 0
+  m_Resource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_CompressionFormat: 0
+  m_EditorResource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_EditorCompressionFormat: 0
 --- !u!1 &95555570
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +252,7 @@ Prefab:
     - target: {fileID: 114152567797748512, guid: 42a9047e1ee281949a8a011b5432fb95,
         type: 2}
       propertyPath: prefabs.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4216492940632950, guid: 42a9047e1ee281949a8a011b5432fb95, type: 2}
       propertyPath: m_LocalPosition.x
@@ -290,6 +317,18 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114152567797748512, guid: 42a9047e1ee281949a8a011b5432fb95,
+        type: 2}
+      propertyPath: prefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1810101580427938, guid: bac21b3f6dee436498b2db0bfb5659da,
+        type: 2}
+    - target: {fileID: 114152567797748512, guid: 42a9047e1ee281949a8a011b5432fb95,
+        type: 2}
+      propertyPath: prefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1668881815997104, guid: 6aa2dc69c1f4fed4e85e7916d02bdac4,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 42a9047e1ee281949a8a011b5432fb95, type: 2}
   m_IsPrefabParent: 0
@@ -360,33 +399,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4321567732192830, guid: 656f122040452411da0963fe567b6527,
     type: 2}
   m_PrefabInternal: {fileID: 1863220879}
---- !u!83 &601127979
-AudioClip:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: helm
-  m_LoadType: 0
-  m_Channels: 1
-  m_Frequency: 48000
-  m_BitsPerSample: 32
-  m_Length: 0
-  m_IsTrackerFormat: 0
-  m_Ambisonic: 0
-  m_SubsoundIndex: 0
-  m_PreloadAudioData: 1
-  m_LoadInBackground: 0
-  m_Legacy3D: 0
-  m_Resource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_CompressionFormat: 0
-  m_EditorResource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_EditorCompressionFormat: 0
 --- !u!1 &601296246
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,9 +555,41 @@ Prefab:
       propertyPath: input.obj
       value: 
       objectReference: {fileID: 888204017}
+    - target: {fileID: 114804671836185424, guid: 74cd3d044d5bd4f5a9c095eb845b62d8,
+        type: 2}
+      propertyPath: fuelConsumptionFactor
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74cd3d044d5bd4f5a9c095eb845b62d8, type: 2}
   m_IsPrefabParent: 0
+--- !u!83 &777113583
+AudioClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: helm
+  m_LoadType: 0
+  m_Channels: 1
+  m_Frequency: 48000
+  m_BitsPerSample: 32
+  m_Length: 0
+  m_IsTrackerFormat: 0
+  m_Ambisonic: 0
+  m_SubsoundIndex: 0
+  m_PreloadAudioData: 1
+  m_LoadInBackground: 0
+  m_Legacy3D: 0
+  m_Resource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_CompressionFormat: 0
+  m_EditorResource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_EditorCompressionFormat: 0
 --- !u!1 &822969109
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +618,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!83 &829811852
+AudioClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: helm
+  m_LoadType: 0
+  m_Channels: 1
+  m_Frequency: 48000
+  m_BitsPerSample: 32
+  m_Length: 0
+  m_IsTrackerFormat: 0
+  m_Ambisonic: 0
+  m_SubsoundIndex: 0
+  m_PreloadAudioData: 1
+  m_LoadInBackground: 0
+  m_Legacy3D: 0
+  m_Resource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_CompressionFormat: 0
+  m_EditorResource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_EditorCompressionFormat: 0
 --- !u!1 &843195501 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1443819051407640, guid: a943a88e0ec754e41957d4b37fd61e88,
@@ -623,33 +694,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 654596390}
   m_Script: {fileID: 11500000, guid: c5c6053f12b294459bbe340c3d14e60a, type: 3}
---- !u!83 &919070076
-AudioClip:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: helm
-  m_LoadType: 0
-  m_Channels: 1
-  m_Frequency: 48000
-  m_BitsPerSample: 32
-  m_Length: 0
-  m_IsTrackerFormat: 0
-  m_Ambisonic: 0
-  m_SubsoundIndex: 0
-  m_PreloadAudioData: 1
-  m_LoadInBackground: 0
-  m_Legacy3D: 0
-  m_Resource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_CompressionFormat: 0
-  m_EditorResource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_EditorCompressionFormat: 0
 --- !u!4 &1173771548 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4640851475080996, guid: 74cd3d044d5bd4f5a9c095eb845b62d8,
@@ -852,6 +896,33 @@ GameObject:
   m_PrefabParentObject: {fileID: 1696477332275220, guid: a4d632bc547d3a34bb56051ffec0d487,
     type: 2}
   m_PrefabInternal: {fileID: 1279121861}
+--- !u!83 &1325282934
+AudioClip:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: helm
+  m_LoadType: 0
+  m_Channels: 1
+  m_Frequency: 48000
+  m_BitsPerSample: 32
+  m_Length: 0
+  m_IsTrackerFormat: 0
+  m_Ambisonic: 0
+  m_SubsoundIndex: 0
+  m_PreloadAudioData: 1
+  m_LoadInBackground: 0
+  m_Legacy3D: 0
+  m_Resource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_CompressionFormat: 0
+  m_EditorResource:
+    m_Source: 
+    m_Offset: 0
+    m_Size: 0
+  m_EditorCompressionFormat: 0
 --- !u!4 &1359642110 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4723109405670520, guid: 656f122040452411da0963fe567b6527,
@@ -948,63 +1019,34 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 853792426}
+    - target: {fileID: 114556583931723570, guid: 6a7e568448391214f8e64e0edbd10cf2,
+        type: 2}
+      propertyPath: fuel
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114814751684274962, guid: 6a7e568448391214f8e64e0edbd10cf2,
+        type: 2}
+      propertyPath: fuel
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114312759084927106, guid: 6a7e568448391214f8e64e0edbd10cf2,
+        type: 2}
+      propertyPath: fuel
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114823315409163020, guid: 6a7e568448391214f8e64e0edbd10cf2,
+        type: 2}
+      propertyPath: fuel
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114927885708833296, guid: 6a7e568448391214f8e64e0edbd10cf2,
+        type: 2}
+      propertyPath: fuel
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a7e568448391214f8e64e0edbd10cf2, type: 2}
   m_IsPrefabParent: 0
---- !u!83 &1410828448
-AudioClip:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: helm
-  m_LoadType: 0
-  m_Channels: 1
-  m_Frequency: 48000
-  m_BitsPerSample: 32
-  m_Length: 0
-  m_IsTrackerFormat: 0
-  m_Ambisonic: 0
-  m_SubsoundIndex: 0
-  m_PreloadAudioData: 1
-  m_LoadInBackground: 0
-  m_Legacy3D: 0
-  m_Resource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_CompressionFormat: 0
-  m_EditorResource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_EditorCompressionFormat: 0
---- !u!83 &1433173593
-AudioClip:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: helm
-  m_LoadType: 0
-  m_Channels: 1
-  m_Frequency: 48000
-  m_BitsPerSample: 32
-  m_Length: 0
-  m_IsTrackerFormat: 0
-  m_Ambisonic: 0
-  m_SubsoundIndex: 0
-  m_PreloadAudioData: 1
-  m_LoadInBackground: 0
-  m_Legacy3D: 0
-  m_Resource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_CompressionFormat: 0
-  m_EditorResource:
-    m_Source: 
-    m_Offset: 0
-    m_Size: 0
-  m_EditorCompressionFormat: 0
 --- !u!114 &1486577963 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114429428929587656, guid: 31fd5bcda9e856d49bae715b67a242c4,
@@ -1416,12 +1458,12 @@ Prefab:
     - target: {fileID: 224136307934464312, guid: a943a88e0ec754e41957d4b37fd61e88,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 479.5
+      value: 418
       objectReference: {fileID: 0}
     - target: {fileID: 224136307934464312, guid: a943a88e0ec754e41957d4b37fd61e88,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 269.5
+      value: 235
       objectReference: {fileID: 0}
     - target: {fileID: 224136307934464312, guid: a943a88e0ec754e41957d4b37fd61e88,
         type: 2}
