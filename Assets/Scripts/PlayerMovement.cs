@@ -168,11 +168,11 @@ public class PlayerMovement : MonoEx, IRaycastable
 		if (currentPitch > 0) {
 			velocityAdd = -currentPitch * dropVelocity;
 			velocityForce += (-currentPitch * Time.deltaTime * 5);
-			if (currentVelocity > 4) {
+			if (currentVelocity > 20) {
 				currentLift = currentPitch * (currentVelocity * liftFactor);
 				velocityForce -= 2 * Time.deltaTime;
 			} else
-				currentLift = -(4 - currentVelocity);
+				currentLift = -(20 - currentVelocity);
 		} else if (currentPitch < 0) {
 			velocityAdd = -currentPitch * dropVelocity * 4;
 			velocityForce += (-currentPitch * Time.deltaTime * 20);
@@ -209,14 +209,12 @@ public class PlayerMovement : MonoEx, IRaycastable
 		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
 		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
 
-		if (hInput != 0) {
-			
-		}
 
 	}
 
 	void FixedUpdate ()
 	{
+
 		rb.velocity = (transform.forward * ((velocityForce + velocityAdd) * boostFactor) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
 	}
 
