@@ -14,9 +14,6 @@ using System.Collections.Generic;
  * add score
  * add orbs that refill fuel from proximity
  * add rings to give good score
- * 
- *
- *
 */
 
 
@@ -85,10 +82,7 @@ public class GameManager : Singleton<GameManager>
 
 	void Awake ()
 	{
-
-		
 		OnStateChange += HandleOnStateChange;
-	
 		Application.targetFrameRate = 60;
 		#if UNITY_EDITOR
 		Application.runInBackground = true;
