@@ -71,26 +71,19 @@ public class PlayerMovement : MonoEx
 	public float currentFuel = 100;
 	[HideInInspector]
 	public float boostPercent;
-
 	[HideInInspector]
 	public float fuelPercent;
-
 	[HideInInspector]
 	public float altitudePercent;
-
 	[HideInInspector]
 	public float velocityPercent;
-
 	[HideInInspector]
 	public float pitchPercent;
-
 	[HideInInspector]
 	public float distance = 0;
 
-
 	public float pitchInputSpeed = 30;
 	public float smoothTime = 10;
-
 
 	public float liftFactor = 1.2f;
 	public float fuelConsumptionFactor = 1;
@@ -120,8 +113,10 @@ public class PlayerMovement : MonoEx
 	float boostFactor = 1;
 	float origVelocityForce = 50;
 	float maxAltitude = 150;
+	float maxLateral = 150;
 	float hInput = 0;
 	float maxVelocity = 110;
+
 
 	public delegate void OnPlayerStateEvent (PlayerState nextState);
 
@@ -177,8 +172,12 @@ public class PlayerMovement : MonoEx
 			StartCoroutine (Auto.Wait (2, () => {
 //				deathMesh.SetActive (false);
 //				renderMesh.SetActive (true);
+				rb.isKinematic = true;
+				rb.velocity = Vector3.zero;
+				currentVelocity = 0;
+				velocityAdd = 0;
+				velocityForce = origVelocityForce;
 				Disable ();
-				Reset ();
 			}));
 			break;
 		}
@@ -210,9 +209,13 @@ public class PlayerMovement : MonoEx
 
 	public override void Reset ()
 	{
+		rb.isKinematic = true;
 		base.Reset ();
-		currentVelocity = 0;
+		rb.isKinematic = true;
+		currentVelocity = 50;
 		distance = 0;
+		currentPitch = 0;
+		currentLift = 0;
 		currentFuel = MaxFuel;
 		velocityForce = origVelocityForce;
 		boostTrail.localScale = origTrailScale;
@@ -223,130 +226,145 @@ public class PlayerMovement : MonoEx
 
 	void Update ()
 	{
-		distance = transform.position.z;
-		var localVel = transform.InverseTransformDirection (new Vector3 (rb.velocity.x, 0, rb.velocity.z));
-		currentVelocity = localVel.z;
-		currentAltitude = transform.position.y;
+		if (GameManager.instance.currentState == GameState.StartGame || GameManager.instance.currentState == GameState.Game) {
+			distance = transform.position.z;
+			var localVel = transform.InverseTransformDirection (new Vector3 (rb.velocity.x, 0, rb.velocity.z));
+			currentVelocity = localVel.z;
+			currentAltitude = transform.position.y;
 
 
-		//PITCH
-		currentPitch = GetPlaneDotProduct ();
+			//PITCH
+			currentPitch = GetPlaneDotProduct ();
 
-		if (currentPitch > 0) {
-			velocityAdd = -currentPitch * dropVelocity;
-			velocityForce += (-currentPitch * Time.deltaTime * 28);
-			if (currentVelocity > 20) {
-				currentLift = currentPitch * (currentVelocity * liftFactor);
-				velocityForce -= 2 * Time.deltaTime;
-			} else
-				currentLift = -(20 - currentVelocity);
-		} else if (currentPitch < 0) {
-			velocityAdd = -currentPitch * dropVelocity * 4;
-			velocityForce += (-currentPitch * Time.deltaTime * 17);
-			currentLift = 0;
-		}
+			if (currentPitch > 0) {
+				velocityAdd = -currentPitch * dropVelocity;
+				velocityForce += (-currentPitch * Time.deltaTime * 28);
+				if (currentVelocity > 20) {
+					currentLift = currentPitch * (currentVelocity * liftFactor);
+					velocityForce -= 2 * Time.deltaTime;
+				} else
+					currentLift = -(20 - currentVelocity);
+			} else if (currentPitch < 0) {
+				velocityAdd = -currentPitch * dropVelocity * 4;
+				velocityForce += (-currentPitch * Time.deltaTime * 17);
+				currentLift = 0;
+			}
 
-		Vector3 target = CameraTargetLookDefault;
+			Vector3 target = CameraTargetLookDefault;
 
-		if (canInput) {
+			if (canInput) {
 			
-			float vInput = Input.GetAxis ("Vertical");
-			hInput = Input.GetAxis ("Horizontal");
+				float vInput = Input.GetAxis ("Vertical");
+				hInput = Input.GetAxis ("Horizontal");
 
-			if (vInput != 0) {
-				transform.Rotate (transform.right, Time.deltaTime * vInput * pitchInputSpeed, Space.Self);
-				if (vInput > 0) {
-					target = Vector3.Lerp (target, CameraTargetLookUp, vInput);
-				} else {
-					target = Vector3.Lerp (target, CameraTargetLookDown, -vInput);
+				if (vInput != 0) {
+					transform.Rotate (transform.right, Time.deltaTime * vInput * pitchInputSpeed, Space.Self);
+					if (vInput > 0) {
+						target = Vector3.Lerp (target, CameraTargetLookUp, vInput);
+					} else {
+						target = Vector3.Lerp (target, CameraTargetLookDown, -vInput);
+					}
 				}
+				Vector3 horizontalAdtionalTarget = Vector3.zero;
+				if (hInput > 0) {
+					horizontalAdtionalTarget = Vector3.Lerp (horizontalAdtionalTarget, CameraTargetLookRight, hInput);
+				} else {
+					horizontalAdtionalTarget = Vector3.Lerp (horizontalAdtionalTarget, CameraTargetLookLeft, -hInput);
+				}
+				target += horizontalAdtionalTarget;
 			}
-			Vector3 horizontalAdtionalTarget = Vector3.zero;
-			if (hInput > 0) {
-				horizontalAdtionalTarget = Vector3.Lerp (horizontalAdtionalTarget, CameraTargetLookRight, hInput);
-			} else {
-				horizontalAdtionalTarget = Vector3.Lerp (horizontalAdtionalTarget, CameraTargetLookLeft, -hInput);
-			}
-			target += horizontalAdtionalTarget;
-		}
-		CameraTargetLook.localPosition = Vector3.Lerp (CameraTargetLook.localPosition, target, CameraTargetLookSmoothing);
+			CameraTargetLook.localPosition = Vector3.Lerp (CameraTargetLook.localPosition, target, CameraTargetLookSmoothing);
 
-		float t = currentVelocity / 90;
-		boostTrail.localScale = Vector3.Lerp (trailMin, trailMax, t);
+			float t = currentVelocity / 90;
+			boostTrail.localScale = Vector3.Lerp (trailMin, trailMax, t);
 
-		//BOOST
-		if (Input.GetKey (KeyCode.Space) && currentFuel > 0) {
-			boostTrail.localScale = Vector3.Lerp (trailMax, trailMaxBoost, boostPercent * 1.5f);
-			currentFuel -= fuelConsumptionFactor * Time.deltaTime;
-			if (velocityForce < origVelocityForce) {
-				velocityForce += 15 * Time.deltaTime;
+			//BOOST
+			if (Input.GetKey (KeyCode.Space) && currentFuel > 0) {
+				boostTrail.localScale = Vector3.Lerp (trailMax, trailMaxBoost, boostPercent * 1.5f);
+				currentFuel -= fuelConsumptionFactor * Time.deltaTime;
+				if (velocityForce < origVelocityForce) {
+					velocityForce += 15 * Time.deltaTime;
+				}
+				if (boostFactor < maxBoostFactor) {
+					boostFactor += boostIncrease * Time.deltaTime;
+				}
+				boostVelocity = Mathf.Lerp (0, maxBoostVelocity, boostPercent);
 			}
-			if (boostFactor < maxBoostFactor) {
-				boostFactor += boostIncrease * Time.deltaTime;
+			if (boostFactor > 1 && Input.GetKey (KeyCode.Space) == false) {
+				boostFactor -= boostDecrease * Time.deltaTime;
 			}
-			boostVelocity = Mathf.Lerp (0, maxBoostVelocity, boostPercent);
-		}
-		if (boostFactor > 1 && Input.GetKey (KeyCode.Space) == false) {
-			boostFactor -= boostDecrease * Time.deltaTime;
-		}
 //
 //		if (boostVelocity > 0) {
 //			velocityForce += boostVelocity;
 //			boostVelocity = 0;
 //		}
 
-		altitudePercent = currentAltitude / maxAltitude;
-		boostPercent = (boostFactor - 1) / (maxBoostFactor - 1);
-		fuelPercent = currentFuel / MaxFuel;
-		velocityPercent = currentVelocity / maxVelocity;
-		pitchPercent = (currentPitch + 1) / 2;
+			altitudePercent = currentAltitude / maxAltitude;
+			boostPercent = (boostFactor - 1) / (maxBoostFactor - 1);
+			fuelPercent = currentFuel / MaxFuel;
+			velocityPercent = currentVelocity / maxVelocity;
+			pitchPercent = (currentPitch + 1) / 2;
 
 
-		boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
+			boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
 
 
-		//ROLL
+			//ROLL
 
-		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
-		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
+			Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
+			planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
 
 
-		#region DONT OPEN 2 SPOOKY
-		//THIS IS THAT GOOD GOOD CODE mmmm tasty
+			#region DONT OPEN 2 SPOOKY
+			//THIS IS THAT GOOD GOOD CODE mmmm tasty
 
-		if (transform.position.y < 20) {
-			pullUp.gameObject.SetActive (true);
+			if (transform.position.y < 20) {
+				pullUp.gameObject.SetActive (true);
+			}
+			if (transform.position.y > 20) {
+				pullUp.gameObject.SetActive (false);
+			}
+
+			if (transform.position.y < 8) {
+				danger.gameObject.SetActive (true);
+			}
+			if (transform.position.y > 8) {
+				danger.gameObject.SetActive (false);
+			}
+
+			if (transform.position.y < 2 && currentState == PlayerState.Flying) {
+				SetState (PlayerState.Danger);
+			}
+			if (currentState == PlayerState.Danger && transform.position.y > 2) {
+				SetState (PlayerState.Flying);
+			}
+			#endregion
+
+
+			if (transform.position.y < 0 && GameManager.instance.currentState != GameState.Collision) {
+				GameManager.instance.SetGameState (GameState.Collision);
+			}
+
+
+			if (transform.position.y > maxAltitude) {
+				Vector3 temp = transform.position;
+				temp.y = maxAltitude;
+				transform.position = temp;
+			}
+			if (transform.position.x < -maxLateral) {
+				Vector3 temp = transform.position;
+				temp.x = -maxLateral;
+				transform.position = temp;
+			}
+
+			if (transform.position.x > maxLateral) {
+				Vector3 temp = transform.position;
+				temp.x = maxLateral;
+				transform.position = temp;
+			}
+
 		}
-		if (transform.position.y > 20) {
-			pullUp.gameObject.SetActive (false);
-		}
-
-		if (transform.position.y < 8) {
-			danger.gameObject.SetActive (true);
-		}
-		if (transform.position.y > 8) {
-			danger.gameObject.SetActive (false);
-		}
-
-		if (transform.position.y < 2 && currentState == PlayerState.Flying) {
-			SetState (PlayerState.Danger);
-		}
-		if (currentState == PlayerState.Danger && transform.position.y > 2) {
-			SetState (PlayerState.Flying);
-		}
-		#endregion
-
-
-		if (transform.position.y < 0 && GameManager.instance.currentState != GameState.Collision) {
-			GameManager.instance.SetGameState (GameState.Collision);
-		}
-
-
-		if (transform.position.y > maxAltitude) {
-			Vector3 temp = transform.position;
-			temp.y = maxAltitude;
-			transform.position = temp;
-		}
+	
 	}
 
 	public void SetState (PlayerState state)
@@ -354,6 +372,7 @@ public class PlayerMovement : MonoEx
 		
 		if (state != currentState) {
 			print ("setting player state to " + state);
+			HandlePlayerStateChange (state);
 			if (OnPlayerStateChange != null) {
 				OnPlayerStateChange (state);
 			}

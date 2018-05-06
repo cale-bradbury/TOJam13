@@ -10,12 +10,17 @@ public class BuildingBuilder : MonoBehaviour
 	public float spawnAheadDistance = 300;
 	public float spawnRange = 100;
 	public float spawnEverySeconds = .5f;
+
+	public float chunkSize = 50;
+	public int numChunks = 6;
+
 	float t = 0;
 	List<GameObject> buildings;
 
 	void Awake ()
 	{
 		GameManager.OnStateChange += HandleOnGameStateChange;
+
 	}
 
 	void OnDestroy ()
@@ -47,33 +52,34 @@ public class BuildingBuilder : MonoBehaviour
 	void OnEnable ()
 	{
 		buildings = new List<GameObject> ();
+		for (int i = 0; i < numChunks; i++) {
+			GameObject g = Instantiate<GameObject> (prefabs [Random.Range (0, prefabs.Count)], new Vector3 (0, 0, chunkSize * buildings.Count), Quaternion.identity);
+			buildings.Add (g);
+		}
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		t -= Time.deltaTime;
-		if (t < 0) {
-			t = spawnEverySeconds;
-			Spawn ();
-		}
 		if (buildings.Count > 0) {
 			
 			if (buildings [0].transform.position.z < player.position.z - 100) {
 				Destroy (buildings [0]);
 				buildings.RemoveAt (0);
+				GameObject g = Instantiate<GameObject> (prefabs [Random.Range (0, prefabs.Count)], new Vector3 (0, 0, chunkSize * buildings.Count), Quaternion.identity);
+				buildings.Add (g);
 			}
 		}
 	}
 
-	void Spawn ()
-	{
-		GameObject g = Instantiate<GameObject> (prefabs [Random.Range (0, prefabs.Count)]);
-		buildings.Add (g);
-		g.transform.position = player.position;
-		g.transform.position.Scale (new Vector3 (1, 0, 1));
-		g.transform.position += new Vector3 (Random.Range (-spawnRange, spawnRange), 0, spawnAheadDistance);
-	}
+	//	void Spawn ()
+	//	{
+	//		GameObject g = Instantiate<GameObject> (prefabs [Random.Range (0, prefabs.Count)]);
+	//		buildings.Add (g);
+	//		g.transform.position = player.position;
+	//		g.transform.position.Scale (new Vector3 (1, 0, 1));
+	//		g.transform.position += new Vector3 (Random.Range (-spawnRange, spawnRange), 0, spawnAheadDistance);
+	//	}
 
 	void EndGame ()
 	{
