@@ -82,6 +82,9 @@ public class PlayerMovement : MonoEx
 	public float velocityPercent;
 
 	[HideInInspector]
+	public float pitchPercent;
+
+	[HideInInspector]
 	public float distance = 0;
 
 
@@ -95,6 +98,8 @@ public class PlayerMovement : MonoEx
 
 	public float velocityForce = 50;
 	public float lateralVelocityForce = 30;
+
+	//	float boostVelocity
 
 	public float maxBoostFactor = 3;
 	public float boostIncrease = 1;
@@ -289,7 +294,7 @@ public class PlayerMovement : MonoEx
 		boostPercent = (boostFactor - 1) / (maxBoostFactor - 1);
 		fuelPercent = currentFuel / MaxFuel;
 		velocityPercent = currentVelocity / maxVelocity;
-
+		pitchPercent = (currentPitch + 1) / 2;
 
 
 		boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
@@ -328,7 +333,6 @@ public class PlayerMovement : MonoEx
 			temp.y = maxAltitude;
 			transform.position = temp;
 		}
-
 	}
 
 	public void SetState (PlayerState state)
