@@ -31,7 +31,8 @@ public class CameraFollow : MonoBehaviour
 		Vector3 direction = -(target.transform.GetComponent<Rigidbody> ().velocity.normalized);
 
 		//  Set the position of the camera relative to the player, with some distance and height
-		m_targetPosition = target.transform.position + (direction * offset.z) + (Vector3.up * offset.y);
+		m_targetPosition = target.transform.position + (direction * offset.z) + (Vector3.up * offset.y) + (Vector3.right * Input.GetAxis ("Horizontal"));
+//		m_targetPosition.x += Input.GetAxis ("Horizontal");
 
 
 
@@ -40,7 +41,7 @@ public class CameraFollow : MonoBehaviour
 
 		// Let the camera look at the player                    
 //		SmoothLookAt (target.position, smoothLookSpeed);
-		transform.LookAt (target.transform);
+//		transform.LookAt (target.transform);
 
 	}
 
