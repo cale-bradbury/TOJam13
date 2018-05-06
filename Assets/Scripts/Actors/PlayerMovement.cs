@@ -289,11 +289,11 @@ public class PlayerMovement : MonoEx
 		if (boostFactor > 1 && Input.GetKey (KeyCode.Space) == false) {
 			boostFactor -= boostDecrease * Time.deltaTime;
 		}
-
-		if (boostVelocity > 0) {
-			velocityForce += boostVelocity;
-			boostVelocity = 0;
-		}
+//
+//		if (boostVelocity > 0) {
+//			velocityForce += boostVelocity;
+//			boostVelocity = 0;
+//		}
 
 		altitudePercent = currentAltitude / maxAltitude;
 		boostPercent = (boostFactor - 1) / (maxBoostFactor - 1);
@@ -309,6 +309,10 @@ public class PlayerMovement : MonoEx
 
 		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
 		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
+
+
+		#region DONT OPEN 2 SPOOKY
+		//THIS IS THAT GOOD GOOD CODE mmmm tasty
 
 		if (transform.position.y < 20) {
 			pullUp.gameObject.SetActive (true);
@@ -330,9 +334,14 @@ public class PlayerMovement : MonoEx
 		if (currentState == PlayerState.Danger && transform.position.y > 2) {
 			SetState (PlayerState.Flying);
 		}
+		#endregion
+
+
 		if (transform.position.y < 0 && GameManager.instance.currentState != GameState.Collision) {
 			GameManager.instance.SetGameState (GameState.Collision);
 		}
+
+
 		if (transform.position.y > maxAltitude) {
 			Vector3 temp = transform.position;
 			temp.y = maxAltitude;
@@ -359,7 +368,7 @@ public class PlayerMovement : MonoEx
 	void FixedUpdate ()
 	{
 		if (GameManager.instance.currentState == GameState.StartGame || GameManager.instance.currentState == GameState.Game)
-			rb.velocity = (transform.forward * ((velocityForce + velocityAdd)) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
+			rb.velocity = (transform.forward * ((velocityForce + velocityAdd) * boostFactor) + (Vector3.up * currentLift) + (transform.right * hInput * lateralVelocityForce));
 	}
 
 	float GetPlaneDotProduct ()
