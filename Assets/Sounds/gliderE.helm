@@ -1,7 +1,7 @@
 {
   "license": "Patch (c) by netgrind.  This patch is licensed under a Creative Commons Attribution 4.0 International License.  You should have received a copy of the license along with this work.  If not, see <http://creativecommons.org/licenses/by/4.0/>.",
   "synth_version": "0.9.0",
-  "patch_name": "gliderA",
+  "patch_name": "gliderE",
   "folder_name": "Sounds",
   "author": "netgrind",
   "settings": {
@@ -18,7 +18,7 @@
     "arp_tempo": 9,
     "beats_per_minute": 2,
     "cross_modulation": 0,
-    "cutoff": 86.235294117647057988,
+    "cutoff": 89.978991596638650208,
     "delay_dry_wet": 0.5,
     "delay_feedback": 0.4000000000000000222,
     "delay_frequency": 2,
@@ -89,7 +89,7 @@
     "resonance": 0.24324324324324320123,
     "reverb_damping": 0.79600000000000004086,
     "reverb_dry_wet": 0.5,
-    "reverb_feedback": 0.85680000000000000604,
+    "reverb_feedback": 0.8456000000000000183,
     "reverb_on": 1,
     "step_frequency": 2,
     "step_seq_00": 0,
@@ -130,7 +130,7 @@
     "step_smoothing": 0,
     "stutter_frequency": 4.3119999999999993889,
     "stutter_on": 1,
-    "stutter_resample_frequency": 3.3214645165714014041,
+    "stutter_resample_frequency": 4,
     "stutter_resample_sync": 0,
     "stutter_resample_tempo": 0,
     "stutter_softness": 1,
@@ -146,14 +146,14 @@
     "volume": 0.71633376623376610048,
     "modulations": [
       {
-        "source": "mono_lfo_1",
-        "destination": "cutoff",
-        "amount": -31.439936804495275169
-      },
-      {
         "source": "poly_lfo",
         "destination": "resonance",
         "amount": 0.16047681866204510648
+      },
+      {
+        "source": "mono_lfo_1",
+        "destination": "cutoff",
+        "amount": -31.439936804495275169
       }
     ]
   }

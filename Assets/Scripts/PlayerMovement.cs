@@ -126,7 +126,10 @@ public class PlayerMovement : MonoEx, IRaycastable
 		_input = _inputType;
 	}
 
-	#endregion
+    #endregion
+
+    [Header("FOR REFLECTION :)")]
+    public float boostPercent;
 
 	void HandleOnStateChange (GameState state)
 	{
@@ -200,7 +203,6 @@ public class PlayerMovement : MonoEx, IRaycastable
 
 		float t = currentVelocity / 90;
 		boostTrail.localScale = Vector3.Lerp (trailMin, trailMax, t);
-		print (currentVelocity);
 
 		//BOOST
 		if (Input.GetKey (KeyCode.Space) && currentFuel > 0) {
@@ -216,7 +218,9 @@ public class PlayerMovement : MonoEx, IRaycastable
 		if (boostFactor > 1 && Input.GetKey (KeyCode.Space) == false) {
 			boostFactor -= boostDecrease * Time.deltaTime;
 		}
-		boostLight.intensity = Mathf.Lerp (minLight, maxLight, (boostFactor - 1) / (maxBoostFactor - 1));
+        boostPercent = (boostFactor - 1) / (maxBoostFactor - 1);
+
+        boostLight.intensity = Mathf.Lerp (minLight, maxLight, boostPercent);
 
 
 		//ROLL

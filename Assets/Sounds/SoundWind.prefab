@@ -173,6 +173,7 @@ MonoBehaviour:
     m_RotationOrder: 0
   source: {fileID: 82286785780969940}
   panAmount: 0.2
+  smoothing: 0.5
 --- !u!114 &114371499585445194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,20 +198,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f3b6e6a951d4582bfd784c7c9b4810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patchObject: {fileID: 102900000, guid: f3cced7110308084b803250505efc558, type: 3}
+  patchObject: {fileID: 102900000, guid: 9125ca50db568bf41b6957588452d87c, type: 3}
   patchData:
     license: Patch (c) by SF.  This patch is licensed under a Creative Commons Attribution
       4.0 International License.  You should have received a copy of the license along
       with this work.  If not, see <http://creativecommons.org/licenses/by/4.0/>.
     synth_version: 0.9.0
-    patch_name: windA
-    folder_name: Desktop
+    patch_name: windB
+    folder_name: Sounds
     author: SF
     settings:
-      amp_attack: 1.656345
+      amp_attack: 1.3529412
       amp_decay: 1.5
       amp_release: 1.9524447
-      amp_sustain: 0.21420985
+      amp_sustain: 1
       arp_frequency: 2
       arp_gate: 0.5
       arp_octaves: 1
@@ -270,13 +271,13 @@ MonoBehaviour:
       osc_1_tune: 0
       osc_1_unison_detune: 10
       osc_1_unison_voices: 1
-      osc_1_volume: 0.17741935
+      osc_1_volume: 0
       osc_1_waveform: 0
       osc_2_transpose: 0
       osc_2_tune: 0
       osc_2_unison_detune: 10
       osc_2_unison_voices: 1
-      osc_2_volume: 0.20967741
+      osc_2_volume: 0
       osc_2_waveform: 0
       osc_feedback_amount: 0
       osc_feedback_transpose: 0
@@ -288,7 +289,7 @@ MonoBehaviour:
       poly_lfo_sync: 1
       poly_lfo_tempo: 7
       poly_lfo_waveform: 0
-      polyphony: 4
+      polyphony: 1
       portamento: -9
       portamento_type: 0
       resonance: 0.6644937
@@ -364,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4430ff3452e4a85ac2530e457beb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  channel: 0
+  channel: 1
   synthParamValue0: 0
   synthParamValue1: 0
   synthParamValue2: 0

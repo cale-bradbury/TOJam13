@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114222116192255246}
   - component: {fileID: 114591413100740492}
   - component: {fileID: 114931608423016544}
+  - component: {fileID: 114968035683271324}
   m_Layer: 0
   m_Name: HelmGlider
   m_TagString: Untagged
@@ -41,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1447776106814018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -26.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -140,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 114309428435384818}
-  note: 52
+  note: 40
   velocity: 1
 --- !u!114 &114309428435384818
 MonoBehaviour:
@@ -217,15 +218,15 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 2
       time: -0.3
-      value: -3
-      inSlope: 10
-      outSlope: 10
+      value: 3
+      inSlope: -10
+      outSlope: -10
       tangentMode: 34
     - serializedVersion: 2
       time: 0.3
-      value: 3
-      inSlope: 10
-      outSlope: 10
+      value: -3
+      inSlope: -10
+      outSlope: -10
       tangentMode: 34
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -255,13 +256,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f3b6e6a951d4582bfd784c7c9b4810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patchObject: {fileID: 102900000, guid: b86894f94b5e0ce48b4a202e9f769010, type: 3}
+  patchObject: {fileID: 102900000, guid: 6470b6892073733489e1c9e8abd6ea6e, type: 3}
   patchData:
     license: Patch (c) by netgrind.  This patch is licensed under a Creative Commons
       Attribution 4.0 International License.  You should have received a copy of the
       license along with this work.  If not, see <http://creativecommons.org/licenses/by/4.0/>.
     synth_version: 0.9.0
-    patch_name: gliderC
+    patch_name: gliderG
     folder_name: Sounds
     author: netgrind
     settings:
@@ -278,7 +279,7 @@ MonoBehaviour:
       arp_tempo: 9
       beats_per_minute: 2
       cross_modulation: 0
-      cutoff: 86.23529
+      cutoff: 70.844536
       delay_dry_wet: 0.5
       delay_feedback: 0.4
       delay_frequency: 2
@@ -287,35 +288,35 @@ MonoBehaviour:
       delay_tempo: 9
       distortion_drive: 0
       distortion_mix: 1
-      distortion_on: 0
-      distortion_type: 0
+      distortion_on: 1
+      distortion_type: 3
       fil_attack: 1.5294118
       fil_decay: 1.5
       fil_env_depth: 0
       fil_release: 1.7058823
       fil_sustain: 0.7794118
-      filter_blend: 2
+      filter_blend: 1
       filter_drive: 3.84
       filter_on: 1
       filter_saturation: 0
       filter_shelf: 1
-      filter_style: 0
+      filter_style: 1
       filter_type: 0
-      formant_on: 0
-      formant_x: 0.5410959
-      formant_y: 0.2882883
+      formant_on: 1
+      formant_x: 0.13013698
+      formant_y: 0.8918919
       keytrack: 1
       legato: 1
       mod_attack: 0
       mod_decay: 1.5
       mod_release: 1.5
       mod_sustain: 0.5
-      mono_lfo_1_amplitude: 1
+      mono_lfo_1_amplitude: 0
       mono_lfo_1_frequency: 1
       mono_lfo_1_retrigger: 2
       mono_lfo_1_sync: 1
-      mono_lfo_1_tempo: 10
-      mono_lfo_1_waveform: 3
+      mono_lfo_1_tempo: 9
+      mono_lfo_1_waveform: 0
       mono_lfo_2_amplitude: 1
       mono_lfo_2_frequency: 1
       mono_lfo_2_retrigger: 2
@@ -349,10 +350,10 @@ MonoBehaviour:
       polyphony: 1
       portamento: -4.376
       portamento_type: 2
-      resonance: 0.21621622
+      resonance: 0.24324325
       reverb_damping: 0.796
       reverb_dry_wet: 0.5
-      reverb_feedback: 0.8648
+      reverb_feedback: 0.8456
       reverb_on: 1
       step_frequency: 2
       step_seq_00: 0
@@ -391,17 +392,17 @@ MonoBehaviour:
       step_sequencer_sync: 1
       step_sequencer_tempo: 7
       step_smoothing: 0
-      stutter_frequency: 3
+      stutter_frequency: 4.312
       stutter_on: 0
-      stutter_resample_frequency: 1
-      stutter_resample_sync: 1
-      stutter_resample_tempo: 6
-      stutter_softness: 0.2
-      stutter_sync: 1
-      stutter_tempo: 8
-      sub_octave: 1
+      stutter_resample_frequency: 4
+      stutter_resample_sync: 0
+      stutter_resample_tempo: 0
+      stutter_softness: 1
+      stutter_sync: 0
+      stutter_tempo: 10
+      sub_octave: 0
       sub_shuffle: 0.068
-      sub_volume: 0.4516129
+      sub_volume: 0.22580644
       sub_waveform: 0
       unison_1_harmonize: 1
       unison_2_harmonize: 1
@@ -411,6 +412,9 @@ MonoBehaviour:
       - source: poly_lfo
         destination: resonance
         amount: 0.16047682
+      - source: mono_lfo_1
+        destination: cutoff
+        amount: -10.588288
 --- !u!114 &114931608423016544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -461,3 +465,53 @@ MonoBehaviour:
   parameter: 46
   percent: 1
   debug: 0
+--- !u!114 &114968035683271324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447776106814018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a8c266df1c062429e243a7058366c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input:
+    type: 0
+    types:
+    - System.Single
+    - System.Int32
+    - UnityEngine.Vector2
+    - UnityEngine.Vector3
+    - UnityEngine.Vector4
+    obj: {fileID: 0}
+    varName: boostPercent
+    componentIndex: 0
+    isMat: 0
+    componentName: PlayerMovement, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    go: {fileID: 0}
+    isVector: 0
+    index: 0
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0.5
+      inSlope: 1.0227274
+      outSlope: 1.0227274
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  controller: {fileID: 114309428435384818}
+  parameter: 13
+  percent: 1
+  debug: 1
