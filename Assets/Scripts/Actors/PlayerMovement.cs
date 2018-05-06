@@ -234,7 +234,7 @@ public class PlayerMovement : MonoEx
 
 		if (currentPitch > 0) {
 			velocityAdd = -currentPitch * dropVelocity;
-			velocityForce += (-currentPitch * Time.deltaTime * 28);
+			velocityForce += (-currentPitch * Time.deltaTime * 14);
 			if (currentVelocity > 20) {
 				currentLift = currentPitch * (currentVelocity * liftFactor);
 				velocityForce -= 2 * Time.deltaTime;
@@ -242,7 +242,7 @@ public class PlayerMovement : MonoEx
 				currentLift = -(20 - currentVelocity);
 		} else if (currentPitch < 0) {
 			velocityAdd = -currentPitch * dropVelocity * 4;
-			velocityForce += (-currentPitch * Time.deltaTime * 17);
+			velocityForce += (-currentPitch * Time.deltaTime * 8);
 			currentLift = 0;
 		}
 
