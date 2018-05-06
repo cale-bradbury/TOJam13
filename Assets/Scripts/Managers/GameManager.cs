@@ -7,11 +7,11 @@ using System.Collections.Generic;
 
 //TODO:
 /*
- * add reset to player state
- * add camera for death state that stays static
- * add UI for velocity, fuel, using boost, altitude
- * calculate distance
- * add score
+// * add reset to player state
+// * add camera for death state that stays static
+// * add UI for velocity, fuel, using boost, altitude
+// * calculate distance
+// * add score
  * add orbs that refill fuel from proximity
  * add rings to give good score
 */
@@ -135,7 +135,6 @@ public class GameManager : Singleton<GameManager>
 			Debug.Log ("ALREADY IN THIS STATE  " + gameState);
 
 		}
-
 	}
 
 
@@ -206,8 +205,6 @@ public class GameManager : Singleton<GameManager>
 		case GameState.End:
 			nextState = GameState.StartGame;
 
-		
-
 			break;
 		case GameState.Collision:
 			FadeAndToggle (introUI, false, 0, 0.01f, 0);
@@ -217,9 +214,7 @@ public class GameManager : Singleton<GameManager>
 
 			fogTransform.enabled = false;
 
-
 			nextState = GameState.StartGame;
-		
 
 			break;
 		}

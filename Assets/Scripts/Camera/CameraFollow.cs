@@ -19,7 +19,7 @@ public class CameraFollow : MonoEx
 	bool followPlayer = true;
 
 
-	void Awake ()
+	protected override void Awake ()
 	{
 		GameManager.OnStateChange += HandleStateChange;
 	}
