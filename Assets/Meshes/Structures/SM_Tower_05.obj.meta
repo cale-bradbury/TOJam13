@@ -1,27 +1,17 @@
 fileFormatVersion: 2
-guid: 8b312877fb26c1946b4ecce5ccc0ece4
-timeCreated: 1525580034
+guid: f5f4b0e1dcc97784aa686363593f9933
+timeCreated: 1525630434
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Apartments
-    100002: Box017
-    100004: Pipes001
-    100006: //RootNode
-    400000: Apartments
-    400002: Box017
-    400004: Pipes001
-    400006: //RootNode
-    2300000: Apartments
-    2300002: Box017
-    2300004: Pipes001
-    3300000: Apartments
-    3300002: Box017
-    3300004: Pipes001
-    4300000: Apartments
-    4300002: Box017
-    4300004: Pipes001
+    100000: //RootNode
+    100002: Tower_05
+    400000: //RootNode
+    400002: Tower_05
+    2300000: Tower_05
+    3300000: Tower_05
+    4300000: Tower_05
   materials:
     importMaterials: 1
     materialName: 0

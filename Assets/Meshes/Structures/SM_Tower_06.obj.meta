@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 6a1397c986a09dd42afc506b6c10fe70
-timeCreated: 1525580033
+guid: 2505e0f9afdb885469d2e139bf6fddd5
+timeCreated: 1525630432
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Box007
-    100002: //RootNode
-    400000: Box007
-    400002: //RootNode
-    2300000: Box007
-    3300000: Box007
-    4300000: Box007
+    100000: //RootNode
+    100002: Tower_06
+    400000: //RootNode
+    400002: Tower_06
+    2300000: Tower_06
+    3300000: Tower_06
+    4300000: Tower_06
   materials:
     importMaterials: 1
     materialName: 0
