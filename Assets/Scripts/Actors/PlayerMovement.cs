@@ -51,7 +51,10 @@ public class PlayerMovement : MonoEx
 	public Transform boostTrail;
 	public FlickerElement pullUp;
 	public FlickerElement danger;
-	public GameObject renderMesh;
+    public AudioHelm.HelmController warningSound;
+    public int warningSoundKeyPullup;
+    public int warningSoundKeyDanger;
+    public GameObject renderMesh;
 	public GameObject deathMesh;
 	public Light boostLight;
 
@@ -306,17 +309,37 @@ public class PlayerMovement : MonoEx
 		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
 
 		if (transform.position.y < 20) {
-			pullUp.gameObject.SetActive (true);
+            if (!pullUp.gameObject.activeSelf)
+            {
+                warningSound.NoteOn(warningSoundKeyPullup);
+                pullUp.gameObject.SetActive(true);
+            }
 		}
-		if (transform.position.y > 20) {
-			pullUp.gameObject.SetActive (false);
+		if (transform.position.y > 20)
+        {
+            if (pullUp.gameObject.activeSelf)
+            {
+                warningSound.NoteOff(warningSoundKeyPullup);
+                pullUp.gameObject.SetActive(false);
+            }
+            
 		}
 
-		if (transform.position.y < 8) {
-			danger.gameObject.SetActive (true);
+		if (transform.position.y < 8)
+        {
+            if (!danger.gameObject.activeSelf)
+            {
+                warningSound.NoteOn(warningSoundKeyDanger);
+                danger.gameObject.SetActive(true);
+            }
 		}
-		if (transform.position.y > 8) {
-			danger.gameObject.SetActive (false);
+		if (transform.position.y > 8)
+        {
+            if (danger.gameObject.activeSelf)
+            {
+                warningSound.NoteOff(warningSoundKeyDanger);
+                danger.gameObject.SetActive(false);
+            }
 		}
 
 		if (transform.position.y < 2 && currentState == PlayerState.Flying) {
