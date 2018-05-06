@@ -51,6 +51,8 @@ public class PlayerMovement : MonoEx
 	public Transform boostTrail;
 	public FlickerElement pullUp;
 	public FlickerElement danger;
+	public GameObject renderMesh;
+	public GameObject deathMesh;
 	public Light boostLight;
 
 	//	[Header ("FOR REFLECTION :)")]
@@ -78,6 +80,9 @@ public class PlayerMovement : MonoEx
 
 	[HideInInspector]
 	public float velocityPercent;
+
+	[HideInInspector]
+	public float distance = 0;
 
 
 	public float pitchInputSpeed = 30;
@@ -130,6 +135,8 @@ public class PlayerMovement : MonoEx
 		case GameState.StartGame:
 			Reset ();
 			Enable ();
+//			renderMesh.SetActive (true);
+//			deathMesh.SetActive (false);
 			canInput = true;
 			
 			break;
@@ -137,6 +144,9 @@ public class PlayerMovement : MonoEx
 			Reset ();
 			break;
 		case GameState.Collision:
+//			renderMesh.SetActive (false);
+//			GameObject.Instantiate (deathMesh, renderMesh.transform.position, renderMesh.transform.rotation);
+//			deathMesh.SetActive (true);
 			SetState (PlayerState.Crashed);
 			break;
 		}
@@ -157,8 +167,10 @@ public class PlayerMovement : MonoEx
 			break;
 		case PlayerState.Crashed:
 			canInput = false;
+
 			StartCoroutine (Auto.Wait (2, () => {
-				
+//				deathMesh.SetActive (false);
+//				renderMesh.SetActive (true);
 				Disable ();
 				Reset ();
 			}));
@@ -187,13 +199,14 @@ public class PlayerMovement : MonoEx
 		origTrailScale = boostTrail.localScale;
 		boostTrail.localScale = trailMin;
 		canInput = false;
-
+		distance = 0;
 	}
 
 	public override void Reset ()
 	{
 		base.Reset ();
 		currentVelocity = 0;
+		distance = 0;
 		currentFuel = MaxFuel;
 		velocityForce = origVelocityForce;
 		boostTrail.localScale = origTrailScale;
@@ -204,7 +217,7 @@ public class PlayerMovement : MonoEx
 
 	void Update ()
 	{
-		
+		distance = transform.position.z;
 		var localVel = transform.InverseTransformDirection (new Vector3 (rb.velocity.x, 0, rb.velocity.z));
 		currentVelocity = localVel.z;
 		currentAltitude = transform.position.y;
@@ -215,7 +228,7 @@ public class PlayerMovement : MonoEx
 
 		if (currentPitch > 0) {
 			velocityAdd = -currentPitch * dropVelocity;
-			velocityForce += (-currentPitch * Time.deltaTime * 18);
+			velocityForce += (-currentPitch * Time.deltaTime * 28);
 			if (currentVelocity > 20) {
 				currentLift = currentPitch * (currentVelocity * liftFactor);
 				velocityForce -= 2 * Time.deltaTime;
@@ -223,7 +236,7 @@ public class PlayerMovement : MonoEx
 				currentLift = -(20 - currentVelocity);
 		} else if (currentPitch < 0) {
 			velocityAdd = -currentPitch * dropVelocity * 4;
-			velocityForce += (-currentPitch * Time.deltaTime * 20);
+			velocityForce += (-currentPitch * Time.deltaTime * 17);
 			currentLift = 0;
 		}
 
@@ -287,17 +300,17 @@ public class PlayerMovement : MonoEx
 		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
 		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
 
-		if (transform.position.y < 10) {
+		if (transform.position.y < 20) {
 			pullUp.gameObject.SetActive (true);
 		}
-		if (transform.position.y > 10) {
+		if (transform.position.y > 20) {
 			pullUp.gameObject.SetActive (false);
 		}
 
-		if (transform.position.y < 4) {
+		if (transform.position.y < 8) {
 			danger.gameObject.SetActive (true);
 		}
-		if (transform.position.y > 4) {
+		if (transform.position.y > 8) {
 			danger.gameObject.SetActive (false);
 		}
 

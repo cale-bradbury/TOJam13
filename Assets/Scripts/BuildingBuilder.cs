@@ -52,15 +52,17 @@ public class BuildingBuilder : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		
 		t -= Time.deltaTime;
 		if (t < 0) {
 			t = spawnEverySeconds;
 			Spawn ();
 		}
-		if (buildings [0].transform.position.z < player.position.z - 100) {
-			Destroy (buildings [0]);
-			buildings.RemoveAt (0);
+		if (buildings.Count > 0) {
+			
+			if (buildings [0].transform.position.z < player.position.z - 100) {
+				Destroy (buildings [0]);
+				buildings.RemoveAt (0);
+			}
 		}
 	}
 
