@@ -307,8 +307,8 @@ public class PlayerMovement : MonoEx
 
 		Quaternion targetRot = Quaternion.Euler (0, 0, 35 * -hInput);
 		planeRoot.localRotation = Quaternion.Slerp (planeRoot.localRotation, targetRot, smoothTime * Time.deltaTime);
-
-		if (transform.position.y < 20) {
+        
+        if (transform.position.y < 20) {
             if (!pullUp.gameObject.activeSelf)
             {
                 warningSound.NoteOn(warningSoundKeyPullup);
