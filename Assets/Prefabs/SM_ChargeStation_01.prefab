@@ -1134,7 +1134,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 1
+  fuel: 5
 --- !u!114 &114365188230945738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1404,7 +1404,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 1
+  fuel: 5
 --- !u!114 &114847583006566778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1433,4 +1433,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   score: 111
-  fuel: 1
+  fuel: 5
